@@ -28,7 +28,9 @@ async function runAllSeeders() {
 
   // Seeders:
 
+ 
   await require("./userSeeder")();
+/*   await require("./tweetSeeder")(); */
 
   /**
    * Aquí se pueden ejectuar otros seeders que hayan en el sistema.
@@ -40,7 +42,7 @@ async function runAllSeeders() {
    *
    * IMPORTANTE: tener en cuenta que el orden en que se ejecutan los seeders
    * suele ser clave. Por ejemplo, antes de crear artículos habría que
-   * crear los usuarios, ya que cada comentario debe tener un autor.
+   * crear los usuarios, ya que cada artículo debe tener un autor.
    *
    */
 

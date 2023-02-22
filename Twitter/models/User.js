@@ -13,6 +13,10 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Inserte un nickname']
     },
+    image: {
+        type: String,
+        required: [true, 'Inserte una imagen']
+    },
     password: {
         type: String,
         required: [true, 'Inserte un nickname']
@@ -24,10 +28,6 @@ const userSchema = new Schema({
     description: {
         type: String,
     },
-    tweets: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Tweet'
-    }],
     following: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -36,6 +36,7 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }]
+    //Validaciones en general TO DO
 }, { timestamps: true })
 
 const User = mongoose.model("User", userSchema)

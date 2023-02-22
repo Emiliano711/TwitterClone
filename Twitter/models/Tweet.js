@@ -8,8 +8,8 @@ const tweetSchema = new Schema({
         required: [true, 'Inserte un texto']
     },
     author: {
-        type: String,
-        required: [true, 'Inserte un author']
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     },
     likes: {
         type: Number,
