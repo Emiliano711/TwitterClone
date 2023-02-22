@@ -14,34 +14,23 @@
  */
 
 const { faker } = require("@faker-js/faker");
-const User = require("../models/User");
+const Tweet = require("../models/User");
 const bcrypt = require("bcryptjs");
 
 faker.locale = "es";
 
 module.exports = async () => {
-  const users = [];
 
+  const tweets = [];
   for (let i = 0; i < 10; i++) {
-    const firstname = faker.name.firstName()
-    const lastname = faker.name.lastName()
-    const username = firstname + lastname;
-    const user = new User({
-      firstname,
-      lastname,
-      username: `${firstname}_${lastname}`,
-      password: await bcrypt.hash("123", 8),
-      image: faker.internet.avatar,
-      description: faker.lorem.paragraph(1),
-      email: `${firstname}_${lastname}@gmail.com`,
-      /* followers: "",
-      following: "", */
-      //Slugify: tolowercase, tildes
-      //Lodash
+    tweets.push({
+      text: faker.lorem.paragraph(1),
+      /*   author: 0, */
+      likes: 0
+
     });
-    users.push(user);
-  } 
-  console.log(users)
-  await User.insertMany(users);
-  console.log("[Database] Se corrió el seeder de Users.");
+  }
+
+  await Tweet.insertMany(tweets);
+  console.log("[Database] Se corrió el seeder de Tweets.");
 };
