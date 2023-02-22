@@ -7,7 +7,7 @@ const tweetSchema = new Schema({
         maxlength: 140,
         required: [true, 'Inserte un texto']
     },
-    author: {
+    userId: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
@@ -15,6 +15,7 @@ const tweetSchema = new Schema({
         type: Number,
     },
 }, { timestamps: true })
+
 const Tweet = mongoose.model("Tweet", tweetSchema)
 
 module.exports = Tweet

@@ -35,6 +35,10 @@ const userSchema = new Schema({
     followers: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
+    }],
+    tweets: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Tweet'
     }]
     //Validaciones en general TO DO
 }, { timestamps: true })

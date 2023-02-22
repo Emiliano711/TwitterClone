@@ -14,7 +14,7 @@
  */
 
 const { faker } = require("@faker-js/faker");
-const User = require("../models/User");
+const { User } = require("../models");
 const bcrypt = require("bcryptjs");
 
 faker.locale = "es";
@@ -22,10 +22,10 @@ faker.locale = "es";
 module.exports = async () => {
   const users = [];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i <= process.env.TOTAL_USERS; i++) {
     const firstname = faker.name.firstName()
     const lastname = faker.name.lastName()
-    const username = firstname + lastname;
+
     const user = new User({
       firstname,
       lastname,
@@ -34,14 +34,19 @@ module.exports = async () => {
       image: faker.internet.avatar,
       description: faker.lorem.paragraph(1),
       email: `${firstname}_${lastname}@gmail.com`,
-      /* followers: "",
-      following: "", */
       //Slugify: tolowercase, tildes
       //Lodash
     });
     users.push(user);
-  } 
-  console.log(users)
+  }
+
+  for (const user of users) {
+    const randomUser = users[faker.datatype.number({ min: 0, max: process.env.TOTAL_USERS - 1 })]
+    user.following.push(randomUser)
+    randomUser.followers.push(user)
+  }
+
+  /*   console.log(users) */
   await User.insertMany(users);
   console.log("[Database] Se corrió el seeder de Users.");
 };
