@@ -7,15 +7,68 @@
     <title>Document</title>
     <%- include("../partials/meta") %>
   </head>
-  <body class="bg-primary-subtle text-emphasis-primary">
-    <div class="container mt-5 bg-primary text-white">
+  <body class="text-emphasis-primary" style="background-color: #065990">
+    <div class="container mt-5">
       <div class="row g-0 shadow rounded">
-        <div class="col-12 col-lg-6 fondo text-div text-center">
-          <h1 class="mb-5">Get insights that help your business grow</h1>
-          <p>Hi! Welcome to Twitter Clone</p>
+        <div
+          class="container col-12 col-lg-6 text-white"
+          style="background-color: #1d9bf0"
+        >
+          <div>
+            <img
+              class="mt-3"
+              style="width: 3rem; height: 3rem"
+              src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/ha.dev%2FTeam5-TwitterApp%2Flogo-twitter-white.svg?alt=media&token=386c4a48-1183-4cc7-8b66-8ad36ec10dc4"
+              alt="Twitter"
+            />
+          </div>
+          <div class="float-start" style="position: relative; top: 400px">
+            <p>Hi! Nice to see you again</p>
+          </div>
         </div>
-        <div class="col-12 col-lg-6">
-          <form action="" method="post"></form>
+        <div class="col-12 col-lg-6 bg-white text-dark">
+          <form action="/login" method="post">
+            <div class="container">
+              <div class="my-5">
+                <h2>Login</h2>
+                <small>Ready to start using Twitter?</small>
+              </div>
+              <div class="form-floating mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="name@example.com"
+                />
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                />
+                <label for="floatingPassword">Password</label>
+              </div>
+              <div class="d-grid gap-1 my-5">
+                <a
+                  class="btn btn-primary"
+                  style="border-radius: 45px"
+                  href="#"
+                  role="button"
+                  >Login</a
+                >
+              </div>
+              <div class="my-5 text-center">
+                <a href="#" class="text-decoration-none text-dark" role="button"
+                  >Don't have an account? Sing Up.</a
+                >
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
