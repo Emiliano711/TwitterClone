@@ -2,8 +2,16 @@ const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
 
+
+// Rutas relacionadas a Profile, Followers, Following
+
+// Hay que agregarle el /:user a las rutas NO OLVIDAR
+
+router.get('/followers', userController.followers);
+router.get('/following', userController.following);
+router.get('/', userController.profile);
 // router.get("/", userController.index);
-// router.get("/crear", userController.create);
+/* router.get("/", userController.index); */
 // router.get("/:id", userController.show);
 // router.post("/", userController.store);
 // router.get("/editar/:id", userController.edit);

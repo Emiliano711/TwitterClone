@@ -16,6 +16,17 @@
  * no debería existir.
  */
 
+
+async function register(req, res) {
+  res.render("users/sign-up")
+}
+
+// Display a listing of the resource.
+async function login(req, res) {
+  res.render("users/login")
+}
+
+
 async function showHome(req, res) {
   res.render("pages/home");
 }
@@ -36,6 +47,8 @@ async function show404(req, res) {
 // ...
 
 module.exports = {
+  login,
+  register,
   showHome,
   showContact,
   showAboutUs,

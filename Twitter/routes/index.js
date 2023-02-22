@@ -3,7 +3,8 @@
  * Una alternativa podría ser organizar las rutas por entidad:
  */
 
-// const userRoutes = require("./userRoutes");
+const userRoutes = require("./userRoutes");
+const authRoutes = require("./authRoutes");
 // const articleRoutes = require("./articleRoutes");
 // const commentRoutes = require("./commentRoutes");
 
@@ -18,7 +19,7 @@
  */
 
 const publicRoutes = require("./publicRoutes");
-// const privateRoutes = require("./privateRoutes");
+const privateRoutes = require("./privateRoutes");
 
 module.exports = (app) => {
   /**
@@ -28,6 +29,9 @@ module.exports = (app) => {
    * en inglés.
    */
 
-  // app.use("/usuarios", userRoutes);
+  // Agregar el parametro /:user en el use
+  app.use("/usuarios", userRoutes);
+  app.use("/", authRoutes);
   app.use("/", publicRoutes);
+  app.use("/", privateRoutes);
 };
