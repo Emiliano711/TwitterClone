@@ -22,30 +22,31 @@ async function logout(req, res) {
 
 //  Crear usuario en la DB
 function createUser(req, res) {
+
     const form = formidable({
-        multiples: true,
+
         uploadDir: __dirname + "/../public/img",
         keepExtensions: true,
     });
 
     form.parse(req, async (err, fields, files) => {
         const passwordParaHashear = fields.password;
-        //const passwordHasheado = await bcrypt.hash(passwordParaHashear, 8);
+        const passwordHasheado = await bcrypt.hash(passwordParaHashear, 8);
         await User.create({
             firstname: fields.firstname,
             lastname: fields.lastname,
             email: fields.email,
             username: fields.username,
             image: files.image.newFilename,
-            password: await bcrypt.hash(fields.password, 8)
+            password: passwordHasheado
         })
+        console.log("pasamos");
         /* user.save() */
+        return res.redirect("/");
     })
-    return res.redirect("/");
-
 }
 
-
+/*
 async function createUser(req, res) {
     const passwordParaHashear = req.body.password;
     const passwordHasheado = await bcrypt.hash(passwordParaHashear, 8);
@@ -57,20 +58,7 @@ async function createUser(req, res) {
         password: passwordHasheado,
     });
     res.redirect("/");
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+}*/
 
 const loginPassport = passport.authenticate("local", {
     successRedirect: "/",

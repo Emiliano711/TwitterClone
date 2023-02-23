@@ -1,5 +1,5 @@
 const { Schema, mongoose } = require("../db")
-
+const bcrypt = require("bcryptjs")
 
 
 const userSchema = new Schema({
@@ -45,6 +45,19 @@ const userSchema = new Schema({
     //Validaciones en general TO DO
 }, { timestamps: true })
 
+// Metodo para Hashear Password
+/* userSchema.pre('save', async function (next) {
+    userSchema.password = await bcrypt.hash(userSchema.password, 8)
+    next();
+}) */
+
 const User = mongoose.model("User", userSchema)
 
+
+
 module.exports = User
+
+
+
+
+
