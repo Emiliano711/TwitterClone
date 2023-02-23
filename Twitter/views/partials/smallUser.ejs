@@ -1,0 +1,25 @@
+<div class="d-flex gap-3 w-100">
+  <!--     Info Usuario -->
+  <div class="d-flex align-items-start gap-3 w-100">
+    <!--     Imagen Usuario -->
+    <figure
+      class="figure rounded-pill d-flex justify-content-center pt-2 px-2"
+      style="background-color: rgb(225, 225, 225)"
+    >
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/ha.dev%2FTeam5-TwitterApp%2Fuser-img-default.svg?alt=media&token=677b8490-0c5a-4983-a36c-5bf5734b67b8"
+        class="figure-img img-fluid w-75"
+        alt="image"
+      />
+    </figure>
+    <!--     Desc. Usuario -->
+    <div>
+      <h6 class="mb-0"><%= user.firstname %> <%= user.lasttname %></h6>
+      <small class="">@<%= user.username %></small>
+    </div>
+  </div>
+  <!--     Boton Follow -->
+  <div class="justify-content-end">
+    <button type="button" class="btn btn-primary">Follow</button>
+  </div>
+</div>

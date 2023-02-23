@@ -4,10 +4,45 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Following</title>
+    <title>Document</title>
     <%- include("../partials/meta") %>
   </head>
   <body>
-    <h1>FOLLOWING</h1>
+    <div class="row">
+      <!--       NavBar -->
+      <div class="col-2 col-md-3"><%- include("../partials/navbar") %></div>
+      <!--       Body -->
+      <div class="col-8 col-md-6 mt-3">
+        <div class="d-flex align-items-start flex-column">
+          <h5 class="mb-0">Leia organa</h5>
+          <small>@princesaleia</small>
+        </div>
+        <div class="mt-3 d-flex justify-content-around">
+          <div>
+            <a
+              href="/usuarios/followers"
+              class="fs-5 text-black fw-semibold text-decoration-none"
+              >Followers</a
+            >
+          </div>
+          <div>
+            <a href="/usuarios/following" class="fs-5 text-black fw-semibold"
+              >Following</a
+            >
+          </div>
+        </div>
+        <div class="mt-3">
+          <% for (const user of users) { %>
+          <!-- comment -->
+          <%- include("../partials/smallUser", { user }) %>
+          <!-- comment -->
+          <%}%>
+        </div>
+      </div>
+      <!--       More info -->
+      <div class="col-md-3 d-none d-md-block">
+        <%- include("../partials/moreinfo") %>
+      </div>
+    </div>
   </body>
 </html>
