@@ -1,4 +1,4 @@
-
+const passport = require("passport");
 //
 async function register(req, res) {
     res.render("users/register")
@@ -10,13 +10,28 @@ async function login(req, res) {
 }
 
 // Display a listing of the resource.
-async function logout(req, res) {
-    res.render("users/logout")
+function logout(req, res, next) {
+    req.logout(function (err) {
+        if (err) {
+            return next(err);
+        }
+        res.redirect("/login");
+    });
 }
 
+const loginPassport = passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+});
+
+async function profile(req, res) {
+    res.render("pages/profile")
+}
 
 module.exports = {
     register,
     login,
-    logout
+    logout,
+    loginPassport,
+    profile
 };
