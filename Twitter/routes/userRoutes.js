@@ -9,8 +9,8 @@ const isAuthenticated = require("../middlewares/isAuthenticated")
 // Hay que agregarle el /:user a las rutas NO OLVIDAR
 router.use(isAuthenticated)
 router.get('/:username', userController.profile);
-router.get('/followers', userController.followers);
-router.get('/following', userController.following);
+router.get('/:username/followers', userController.followers);
+router.get('/:username/following', userController.following);
 // router.get("/", userController.index);
 /* router.get("/", userController.index); */
 // router.get("/:id", userController.show);

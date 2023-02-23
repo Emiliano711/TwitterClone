@@ -12,7 +12,6 @@ module.exports = (app) => {
         usernameField: "email",
         passwordField: "password",
       },
-
       async function (username, password, done) {
         try {
           const user = await User.findOne({ email: username });
@@ -29,7 +28,7 @@ module.exports = (app) => {
         } catch (error) {
           done(error);
         }
-      },
+      }
     ),
   );
 
