@@ -33,7 +33,7 @@ module.exports = async () => {
       username: `${firstname}_${lastname}`,
       password: await bcrypt.hash("123", 8),
       image: faker.internet.avatar(),
-      description: faker.lorem.paragraph(1),
+      description: faker.lorem.sentence(10),
       email: `${firstname}_${lastname}@gmail.com`
       //Slugify: tolowercase, tildes
       //Lodash

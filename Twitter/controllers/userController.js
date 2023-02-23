@@ -19,11 +19,13 @@ async function update(req, res) { }
 async function destroy(req, res) { }
 
 async function followers(req, res) {
-  res.render("pages/followers")
+  const users = await User.find()
+  res.render("pages/followers", { users })
 }
 
 async function following(req, res) {
-  res.render("pages/following")
+  const users = await User.find()
+  res.render("pages/following", { users })
 }
 
 async function profile(req, res) {
