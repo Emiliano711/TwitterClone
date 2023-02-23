@@ -4,21 +4,54 @@
     <%- include("../partials/meta") %>
   </head>
   <body>
-    <div class="row">
-      <div class="col-2"><%- include("../partials/navbar") %></div>
-      <div class="col-md-6">
-        <h1 class="my-4"><%= user.username %></h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+    <div class="row container">
+      <div class="col-2 col-md-2 col-lg-2">
+        <%- include("../partials/navbar") %>
       </div>
-      <div class="col-md-4"><%- include("../partials/moreinfo") %></div>
+      <div class="col-8 col-md-6 col-lg-7">
+        <div
+          style="background-color: #1d9bf0; height: 20vh"
+          class="d-flex align-items-end"
+        >
+          <img
+            class="rounded-pill position-relative ms-3 border border-5 border-white"
+            style="
+              height: 7rem;
+              width: 7rem;
+              top: 55px;
+              border-style: solid;
+              border-color: white;
+            "
+            src="<%= user.image %>"
+            alt="Gato"
+          />
+        </div>
+        <div class="d-flex justify-content-end mt-3">
+          <button
+            class="btn text-light"
+            type="submit"
+            style="background-color: #1d9bf0"
+          >
+            Follow
+          </button>
+        </div>
+        <h3 class="ms-3 mt-3"><%= user.firstname %> <%= user.lastname %></h3>
+        <div class="d-flex">
+          <div class="ms-3">
+            <small style="color: #969696; font-weight: 500">
+              @<%= user.username %></small
+            >
+          </div>
+          <div class="ms-auto">
+            <small> <%= user.followers %> Followers</small>
+            <small> <%= user.following %> Following</small>
+          </div>
+        </div>
+        <h6 class="ms-3 mt-3">Tweets</h6>
+      </div>
+      <div class="col-md-3 d-none d-md-block">
+        <%- include("../partials/moreinfo") %>
+      </div>
     </div>
   </body>
 </html>
