@@ -19,22 +19,18 @@
         </div>
         <div class="mt-3 d-flex justify-content-around">
           <div>
-            <a
-              href="/<%= user.username %>/followers"
-              class="fs-5 text-black fw-semibold"
-              >Followers</a
-            >
+            <a class="fs-5 text-black fw-semibold">Followers</a>
           </div>
           <div>
             <a
-              href="/<%= user.username %>/following"
+              href="following"
               class="fs-5 text-black fw-semibold text-decoration-none"
               >Following</a
             >
           </div>
         </div>
         <div class="mt-3 d-flex flex-column gap-2">
-          <% for (const user of users) { %>
+          <% for (const user of userFollowers.followers) { %>
           <!-- comment -->
           <%- include("../partials/smallUser", { user }) %>
           <!-- comment -->
