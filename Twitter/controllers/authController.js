@@ -10,28 +10,35 @@ async function login(req, res) {
 }
 
 // Display a listing of the resource.
-function logout(req, res, next) {
+async function logout(req, res) {
     req.logout(function (err) {
-        if (err) {
-            return next(err);
-        }
+        if (err) { return next(err); }
         res.redirect("/login");
     });
 }
+
+/*^// MI LOGOUT: juanma
+async function logout(req, res) {
+    req.logout(function (err) {
+        //if (err) { return next(err); }
+        res.redirect("/");
+    });
+} */
+
+//* / LOGOUT DE JOSE:
+/* async function logout(req, res, next) {
+   req.session.destroy();
+   res.redirect("/");
+} */
 
 const loginPassport = passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
 });
 
-async function profile(req, res) {
-    res.render("pages/profile")
-}
-
 module.exports = {
     register,
     login,
     logout,
     loginPassport,
-    profile
 };

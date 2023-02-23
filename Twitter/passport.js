@@ -9,13 +9,13 @@ module.exports = (app) => {
   passport.use(
     new LocalStrategy(
       {
-        usernameField: "email" || "username",
+        usernameField: "email",
         passwordField: "password",
       },
 
       async function (username, password, done) {
         try {
-          const user = await User.findOne({ where: { email: username } });
+          const user = await User.findOne({ email: username });
           if (!user) {
             console.log("El usuario  no  existe");
             return done(null, false, { message: "Credenciales incorrectas" });

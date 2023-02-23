@@ -12,7 +12,6 @@ const authController = require("../controllers/authController")
 router.get("/register", authController.register);
 router.post("/login", authController.loginPassport);
 router.get("/login", authController.login);
-router.get('/:username', isAuthenticated, authController.profile);
 router.post("/logout", authController.logout);
 
 module.exports = router;

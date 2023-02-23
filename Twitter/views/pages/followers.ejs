@@ -19,13 +19,15 @@
         </div>
         <div class="mt-3 d-flex justify-content-around">
           <div>
-            <a href="/usuarios/followers" class="fs-5 text-black fw-semibold"
+            <a
+              href="/<%= user.username %>/followers"
+              class="fs-5 text-black fw-semibold"
               >Followers</a
             >
           </div>
           <div>
             <a
-              href="/usuarios/following"
+              href="/<%= user.username %>/following"
               class="fs-5 text-black fw-semibold text-decoration-none"
               >Following</a
             >
