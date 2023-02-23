@@ -13,6 +13,7 @@
           style="background-color: #1d9bf0; height: 20vh"
           class="d-flex align-items-end"
         >
+          <% if (user.image.includes("http")) { %>
           <img
             class="rounded-pill position-relative ms-3 border border-5 border-white"
             style="
@@ -25,6 +26,22 @@
             src="<%= user.image %>"
             alt="Gato"
           />
+          />
+          <!--   coment -->
+          <% } else {%>
+          <img
+            class="rounded-pill position-relative ms-3 border border-5 border-white"
+            style="
+              height: 7rem;
+              width: 7rem;
+              top: 55px;
+              border-style: solid;
+              border-color: white;
+            "
+            src="/img/<%= user.image %>"
+            alt="Gato"
+          />
+          <% } %>
         </div>
         <div class="d-flex justify-content-end mt-3">
           <button
