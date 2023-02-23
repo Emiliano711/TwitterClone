@@ -15,13 +15,13 @@
 
 const { faker } = require("@faker-js/faker");
 const { Tweet, User } = require("../models");
-const bcrypt = require("bcryptjs");
 
 faker.locale = "es";
 
 module.exports = async () => {
 
   const tweets = [];
+
   for (let i = 0; i < process.env.TOTAL_TWEETS; i++) {
     const tweet = new Tweet({
       text: faker.lorem.sentence(10),

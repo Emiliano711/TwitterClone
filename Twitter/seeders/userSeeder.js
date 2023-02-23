@@ -23,6 +23,7 @@ module.exports = async () => {
   const users = [];
 
   for (let i = 0; i <= process.env.TOTAL_USERS; i++) {
+
     const firstname = faker.name.firstName()
     const lastname = faker.name.lastName()
 
@@ -31,9 +32,9 @@ module.exports = async () => {
       lastname,
       username: `${firstname}_${lastname}`,
       password: await bcrypt.hash("123", 8),
-      image: faker.internet.avatar,
+      image: faker.internet.avatar(),
       description: faker.lorem.paragraph(1),
-      email: `${firstname}_${lastname}@gmail.com`,
+      email: `${firstname}_${lastname}@gmail.com`
       //Slugify: tolowercase, tildes
       //Lodash
     });
