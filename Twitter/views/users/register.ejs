@@ -8,7 +8,7 @@
     <%- include("../partials/meta") %>
   </head>
   <body class="text-emphasis-primary" style="background-color: #065990">
-    <div class="container mt-5">
+    <div class="container my-5">
       <div class="row g-0 shadow overflow-hidden rounded shadow">
         <div
           class="container d-none col-md-4 col-lg-8 text-white d-md-flex align-items-start flex-column"
@@ -26,12 +26,17 @@
             <strong><p class="fs-5">Hi! Welcome to Twitter Clone 👋</p></strong>
           </div>
         </div>
-        <div class="col-12 col-md-8 col-lg-4 bg-white text-dark d-flex justify-content-center align-items-center">
-          <form action="/login" method="post">
+        <!--         Form SignIn -->
+        <div
+          class="col-12 col-md-8 col-lg-4 bg-white text-dark d-flex justify-content-center align-items-center"
+        >
+          <form action="/register" method="post">
             <div class="container">
               <div class="my-5">
                 <h2 class="fw-bold">Sign up</h2>
-                <small class="fw-semibold">Create an account and start using Twitter</small>
+                <small class="fw-semibold"
+                  >Create an account and start using Twitter</small
+                >
               </div>
               <div class="form-floating mb-3">
                 <input
@@ -73,11 +78,15 @@
                 />
                 <label for="floatingInput">Username</label>
               </div>
-              
+
               <div class="mb-3">
-                <input class="form-control" type="file" id="formFile">
+                <input
+                  class="form-control"
+                  name="image"
+                  id="image"
+                  type="file"
+                />
               </div>
-              
 
               <div class="form-floating">
                 <input
@@ -93,14 +102,16 @@
                 <button
                   class="btn text-light"
                   style="border-radius: 45px; background-color: #1d9bf0"
-                  href="#"
-                  role="button"
                   type="submit"
-                  >Sign up</button
                 >
+                  Sign up
+                </button>
               </div>
               <div class="my-5 text-center">
-                <a href="/login" class="text-decoration-none text-dark fw-semibold" role="button"
+                <a
+                  href="/login"
+                  class="text-decoration-none text-dark fw-semibold"
+                  role="button"
                   >Already have an account? Sign in.</a
                 >
               </div>
