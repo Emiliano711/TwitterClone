@@ -1,5 +1,7 @@
 const { Schema, mongoose } = require("../db")
 
+
+
 const userSchema = new Schema({
     firstname: {
         type: String,

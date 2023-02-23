@@ -1,4 +1,4 @@
-<div class="d-grid justify-content-end p-3" style="height: 100vh">
+<div class="sticky-top d-grid justify-content-end p-3" style="height: 100vh">
   <div class="d-flex flex-column align-items-center justify-content-between">
     <div class="d-flex flex-column align-items-center gap-4">
       <a href="/home">
@@ -10,7 +10,7 @@
         />
       </a>
       <!--       Home Anchor -->
-      <a href="/home">
+      <a href="/">
         <img
           class=""
           src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/ha.dev%2FTeam5-TwitterApp%2Fhome-twitter-black.svg?alt=media&token=c27bd955-3133-4136-ae20-9b845e4be293"
@@ -18,7 +18,7 @@
         />
       </a>
       <!--       User Profile Anchor -->
-      <a href="/user.id">
+      <a href="/usuarios/<%= user.username %>">
         <img
           class=""
           src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/ha.dev%2FTeam5-TwitterApp%2Ficon-twitter-black.svg?alt=media&token=c5b33232-502c-4218-bc70-efed4ea26f6f"
@@ -41,15 +41,17 @@
   </div>
   <div class="d-flex flex-column justify-content-end">
     <!--     LogOut Button -->
-    <a
-      class="p-2 d-flex justify-content-center"
-      style="background-color: #f01d1d; border-radius: 100%"
-    >
-      <img
-        class="w-65"
-        src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/ha.dev%2FTeam5-TwitterApp%2Flogout-icon.svg?alt=media&token=d6b309ec-b36d-452b-bd89-52766df67ac7"
-        alt="user_icon"
-      />
-    </a>
+    <form action="/logout" method="post">
+      <button
+        class="p-2 d-flex justify-content-center"
+        style="background-color: #f01d1d; border-radius: 100%"
+      >
+        <img
+          class="w-65"
+          src="https://firebasestorage.googleapis.com/v0/b/noboss-app.appspot.com/o/ha.dev%2FTeam5-TwitterApp%2Flogout-icon.svg?alt=media&token=d6b309ec-b36d-452b-bd89-52766df67ac7"
+          alt="user_icon"
+        />
+      </button>
+    </form>
   </div>
 </div>

@@ -1,3 +1,5 @@
+
+
 const User = require("../models/User");
 
 // Display the specified resource.
@@ -28,9 +30,11 @@ async function following(req, res) {
   res.render("pages/following", { users })
 }
 
+
 async function profile(req, res) {
   res.render("pages/profile")
 }
+
 
 // Otros handlers...
 // ...
