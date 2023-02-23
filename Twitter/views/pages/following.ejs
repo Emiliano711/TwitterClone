@@ -20,19 +20,20 @@
         <div class="mt-3 d-flex justify-content-around">
           <div>
             <a
-              href="/usuarios/followers"
+              href="followers"
               class="fs-5 text-black fw-semibold text-decoration-none"
               >Followers</a
             >
           </div>
           <div>
-            <a href="/usuarios/following" class="fs-5 text-black fw-semibold"
-              >Following</a
-            >
+            <a class="fs-5 text-black fw-semibold">Following</a>
           </div>
         </div>
         <div class="mt-3 d-flex flex-column gap-2">
-          <% for (const user of users) { %>
+          <!-- TO DO: Hacer que entre a el arreglo following dentro del Modelo User -->
+          <% for (user of userFollowing.following){%>
+          <!-- comment -->
+          <%= console.log(user) %>
           <!-- comment -->
           <%- include("../partials/smallUser", { user }) %>
           <!-- comment -->
