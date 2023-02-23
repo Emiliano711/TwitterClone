@@ -6,11 +6,10 @@ const bcrypt = require("bcryptjs")
 module.exports = (app) => {
   app.use(passport.session());
 
-
   passport.use(
     new LocalStrategy(
       {
-        usernameField: "email",
+        usernameField: "email" || "username",
         passwordField: "password",
       },
 
