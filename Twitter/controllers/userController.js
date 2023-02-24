@@ -22,8 +22,14 @@ async function profile(req, res) {
   return res.render("pages/profile", { user });
 }
 
+async function newTweet(req, res) {
+  console.log(newTweet);
+  return res.redirect("/");
+}
+
 module.exports = {
   followers,
   following,
   profile,
+  newTweet,
 };
