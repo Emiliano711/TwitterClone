@@ -1,12 +1,34 @@
 <div class="d-flex gap-3 w-100">
   <!--     Imagen Usuario -->
   <a href="/usuarios/<%= tweet.user.username %>">
+    <% if (user.image.includes("http")) { %>
     <img
+      class="rounded-pill position-relative ms-3 border border-5 border-white"
+      style="
+        height: 7rem;
+        width: 7rem;
+        top: 55px;
+        border-style: solid;
+        border-color: white;
+      "
       src="<%= tweet.user.image %>"
-      style="width: 2.5rem"
-      class="figure-img img-fluid rounded-pill align-self-center"
-      alt="image"
+      alt="Gato"
     />
+    <!--   coment -->
+    <% } else {%>
+    <img
+      class="rounded-pill position-relative ms-3 border border-5 border-white"
+      style="
+        height: 7rem;
+        width: 7rem;
+        top: 55px;
+        border-style: solid;
+        border-color: white;
+      "
+      src="/img/<%= tweet.user.image %>"
+      alt="Gato"
+    />
+    <%}%>
   </a>
   <!-- Nombre y Apellido del Usuario -->
   <div class="d-flex flex-column">
@@ -27,9 +49,15 @@
     </div>
     <div class="d-flex justify-content-between w-100">
       <!-- Boton de Like -->
-    <form action="/usuarios/<%=tweet._id%>" method="post">
-      <a href="" role="button"><img src="https://cdn-icons-png.flaticon.com/512/2961/2961957.png" class="img-fluid object-fit" style="width: 1.2rem" alt="heart-white"></a>
-    </form>
+      <form action="/usuarios/<%=tweet._id%>" method="post">
+        <a href="" role="button"
+          ><img
+            src="https://cdn-icons-png.flaticon.com/512/2961/2961957.png"
+            class="img-fluid object-fit"
+            style="width: 1.2rem"
+            alt="heart-white"
+        /></a>
+      </form>
     </div>
   </div>
 </div>

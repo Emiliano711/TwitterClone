@@ -13,12 +13,22 @@
         <form action="/usuarios/?_method=put" method="post">
           <div class="d-flex">
             <div class="me-3">
+              <% if (user.image.includes("http")) { %>
               <img
-                src="<%=user.image%>"
                 style="width: 4rem; object-fit: contain"
                 class="figure-img img-fluid rounded-pill align-self-center"
                 alt="image"
+                src="<%= user.image %>"
               />
+              <!--   coment -->
+              <% } else {%>
+              <img
+                style="width: 4rem; object-fit: contain"
+                class="figure-img img-fluid rounded-pill align-self-center"
+                alt="image"
+                src="/img/<%= user.image %>"
+              />
+              <%}%>
             </div>
             <div class="w-100">
               <textarea

@@ -1,12 +1,22 @@
 <div class="d-flex gap-3 w-100 mb-4">
   <!--     Imagen Usuario -->
   <div>
+    <% if (user.image.includes("http")) { %>
     <img
-      src="<%= user.image %>"
       style="width: 2.5rem"
       class="figure-img img-fluid rounded-pill align-self-center"
       alt="image"
+      src="<%= user.image %>"
     />
+    <!--   coment -->
+    <% } else {%>
+    <img
+      style="width: 2.5rem"
+      class="figure-img img-fluid rounded-pill align-self-center"
+      alt="image"
+      src="/img/<%= user.image %>"
+    />
+    <%}%>
   </div>
   <!-- Nombre y Apellido del Usuario -->
   <div class="d-flex flex-column w-100">
