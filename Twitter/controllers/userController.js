@@ -27,14 +27,11 @@ async function newTweet(req, res) {
     user: req.user.id,
     text: req.body.newTweet,
   });
-  console.log(newTweet);
   newTweet.save();
-
   await User.updateOne(
     { _id: req.user.id },
-    { $set: { tweets: req.body.newTweet } }
+    { $push: { tweets: newTweet } }
   );
-  console.log(newTweet);
   return res.redirect("/");
 }
 
