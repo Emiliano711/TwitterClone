@@ -58,18 +58,24 @@
             >
           </div>
           <div class="ms-auto">
-            <a class="btn" href="../usuarios/followers" role="button"
+            <a
+              class="btn"
+              href="/usuarios/<%=user.username%>/followers"
+              role="button"
               ><%= user.followers.length %>Followers</a
             >
-            <a class="btn" href="../usuarios/following" role="button"
+            <a
+              class="btn"
+              href="/usuarios/<%=user.username%>/following"
+              role="button"
               ><%= user.following.length %>Following</a
             >
           </div>
         </div>
         <h6 class="ms-3 mt-3">Tweets</h6>
-        <% for (const tweet of userProfile.tweets) { %>
+        <% for (const tweet of user.tweets) { %>
         <!--           comment -->
-        <%- include("../partials/tweet", { tweet }) %>
+        <%- include("../partials/tweetProfile", { tweet }) %>
         <!--           comment -->
         <% } %>
       </div>
