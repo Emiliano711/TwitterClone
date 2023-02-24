@@ -22,22 +22,8 @@ async function profile(req, res) {
   return res.render("pages/profile", { user });
 }
 
-async function newTweet(req, res) {
-  const newTweet = new Tweet({
-    user: req.user.id,
-    text: req.body.newTweet,
-  });
-  newTweet.save();
-  await User.updateOne(
-    { _id: req.user.id },
-    { $push: { tweets: newTweet } }
-  );
-  return res.redirect("/");
-}
-
 module.exports = {
   followers,
   following,
   profile,
-  newTweet,
 };

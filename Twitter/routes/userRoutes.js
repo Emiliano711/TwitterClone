@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
+const tweetsController = require("../controllers/tweetsController");
 const isAuthenticated = require("../middlewares/isAuthenticated");
 
 // Rutas relacionadas a Profile, Followers, Following
@@ -10,7 +11,8 @@ router.use(isAuthenticated);
 router.get("/:username", userController.profile);
 router.get("/:username/followers", userController.followers);
 router.get("/:username/following", userController.following);
-router.put("/", userController.newTweet);
+router.put("/", tweetsController.newTweet);
+router.delete("/:id", tweetsController.deleteTweet);
 // router.get("/", userController.index);
 /* router.get("/", userController.index); */
 // router.get("/:id", userController.show);
