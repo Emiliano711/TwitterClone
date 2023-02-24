@@ -25,5 +25,11 @@
     <div class="d-flex">
       <p><%=tweet.text %></p>
     </div>
+    <div class="d-flex justify-content-between w-100">
+      <!-- Boton de Like -->
+    <form action="/usuarios/<%=tweet._id%>" method="post">
+      <a href="" role="button"><img src="https://cdn-icons-png.flaticon.com/512/2961/2961957.png" class="img-fluid object-fit" style="width: 1.2rem" alt="heart-white"></a>
+    </form>
+    </div>
   </div>
 </div>
