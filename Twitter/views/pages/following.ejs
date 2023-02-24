@@ -4,18 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title><%= userFollowing.firstname %> <%= userFollowing.lastname %></title>
     <%- include("../partials/meta") %>
   </head>
   <body>
     <div class="row">
       <!--       NavBar -->
-      <div class="col-2 col-md-3"><%- include("../partials/navbar") %></div>
+      <div class="col-2"><%- include("../partials/navbar") %></div>
       <!--       Body -->
-      <div class="col-8 col-md-6 mt-3">
-        <div class="d-flex align-items-start flex-column">
-          <h5 class="mb-0"><%= user.firstname %> <%= user.lastname %></h5>
-          <small><%= user.username %></small>
+      <div class="col-10 col-md-6">
+        <div class="d-flex align-items-start flex-column mt-4">
+          <h5 class="mb-0">
+            <%= userFollowing.firstname %> <%= userFollowing.lastname %>
+          </h5>
+          <small>@<%= userFollowing.username %></small>
         </div>
         <div class="mt-3 d-flex justify-content-around">
           <div>
@@ -41,7 +43,7 @@
         </div>
       </div>
       <!--       More info -->
-      <div class="col-md-3 d-none d-md-block">
+      <div class="col-4 d-none d-lg-block col-lg-4">
         <%- include("../partials/moreinfo") %>
       </div>
     </div>

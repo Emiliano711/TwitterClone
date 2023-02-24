@@ -43,33 +43,49 @@
 
         <div class="d-flex justify-content-end mt-5">
           <button
-            class="btn text-light"
+            class="btn text-light rounded-pill"
             type="submit"
             style="background-color: #1d9bf0"
           >
             Follow
           </button>
         </div>
-        <h3 class="ms-3 mt-3"><%= user.firstname %> <%= user.lastname %></h3>
+        <h3 class="ms-3 mt-3 mb-0">
+          <%= user.firstname %> <%= user.lastname %>
+        </h3>
         <div class="d-flex">
           <div class="ms-3">
-            <small style="color: #969696; font-weight: 500">
+            <small style="color: #647788; font-weight: 400">
               @<%= user.username %></small
             >
           </div>
-          <div class="ms-auto">
-            <a
-              class="btn"
-              href="/usuarios/<%=user.username%>/followers"
-              role="button"
-              ><%= user.followers.length %>Followers</a
-            >
-            <a
-              class="btn"
-              href="/usuarios/<%=user.username%>/following"
-              role="button"
-              ><%= user.following.length %>Following</a
-            >
+          <div class="ms-auto d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center gap-1">
+              <small style="font-weight: 700; color: #000000"
+                ><%= user.followers.length %></small
+              >
+              <a
+                class="text-decoration-none"
+                href="/usuarios/<%=user.username%>/followers"
+                role="button"
+                style="color: #647788"
+              >
+                Followers</a
+              >
+            </div>
+            <div class="d-flex align-items-center gap-1">
+              <small style="color: #000000; font-weight: 700"
+                ><%= user.following.length %></small
+              >
+              <a
+                class="text-decoration-none"
+                href="/usuarios/<%=user.username%>/following"
+                role="button"
+                style="color: #647788"
+              >
+                Following</a
+              >
+            </div>
           </div>
         </div>
         <h6 class="ms-3 mt-3">Tweets</h6>
