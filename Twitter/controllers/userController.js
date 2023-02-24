@@ -4,14 +4,14 @@ async function followers(req, res) {
   const userFollowers = await User.findOne({ username: req.params.username });
   const followers = userFollowers.followers;
   const users = await User.find({ _id: { $in: followers } });
-  return res.render("pages/followers", { users });
+  return res.render("pages/followers", { users, userFollowers });
 }
 
 async function following(req, res) {
   const userFollowing = await User.findOne({ username: req.params.username });
   const followings = userFollowing.following;
   const users = await User.find({ _id: { $in: followings } });
-  return res.render("pages/following", { users });
+  return res.render("pages/following", { users, userFollowing });
 }
 
 async function profile(req, res) {
