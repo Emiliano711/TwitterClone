@@ -5,13 +5,11 @@
   </head>
   <body>
     <div class="row container">
-      <div class="col-2 col-md-2 col-lg-2">
-        <%- include("../partials/navbar") %>
-      </div>
+      <div class="col-2"><%- include("../partials/navbar") %></div>
 
       <div
         style="background-color: #1d9bf0; height: 20vh"
-        class="col-8 col-md-6 col-lg-7"
+        class="col-10 col-md-6"
       >
         <% if (user.image.includes("http")) { %>
         <img
@@ -96,7 +94,7 @@
         <% } %>
       </div>
 
-      <div class="col-md-3 d-none d-md-block">
+      <div class="col-4 d-none d-lg-block col-lg-4">
         <%- include("../partials/moreinfo") %>
       </div>
     </div>

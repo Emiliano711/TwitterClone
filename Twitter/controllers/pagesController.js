@@ -29,18 +29,17 @@ async function login(req, res) {
 async function showHome(req, res) {
   const userFollowing = await User.findById(req.user._id);
   const followings = userFollowing.following;
-  const users = await User.find({ _id: { $in: followings } }).populate(
-    "tweets"
-  );
-  const tweets = [];
-  for (const user of users) {
-    tweets.push(user.tweets);
+  const users = await User.find({ _id: { $in: followings } }).populate("tweets")
+  // Entro a un Usuario y convirtio los id de tweets en Object: tweets: [ [Object], [Object] ]
+  // Esto gracias al populate
+  const allTweets = []
+  for (const newuser of users) {
+    const tweets = await Tweet.find({user: newuser._id}).populate("user")
+    allTweets.push(...tweets); 
   }
-
-  //console.log(tweets); // los tweets que se generan por el for
-  // const tweets = await Tweet.find().populate("user");
-  return res.render("pages/home", { tweets });
+   return res.render("pages/home", { allTweets }); 
 }
+
 
 async function showContact(req, res) {
   res.render("pages/contact");
