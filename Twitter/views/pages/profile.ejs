@@ -64,12 +64,11 @@
           </div>
         </div>
         <h6 class="ms-3 mt-3">Tweets</h6>
-        <% for (const user of userProfile) { %>
 
         <div class="d-flex w-100 align-items-center">
+          <% for (const tweet of user.tweets) { %>
           <div class="d-flex align-items-center gap-3 w-100">
             <!--     Imagen Usuario -->
-
             <div>
               <img
                 src="<%=user.image  %>"
@@ -86,12 +85,12 @@
               </p>
               <!-- Contenido del usuario -->
               <div class="d-flex">
-                <p><%=user.description %></p>
+                <p><%=tweet.text %></p>
               </div>
             </div>
           </div>
+          <% } %>
         </div>
-        <% } %>
       </div>
 
       <div class="col-md-3 d-none d-md-block">
