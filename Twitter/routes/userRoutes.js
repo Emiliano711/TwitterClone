@@ -1,16 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
-const isAuthenticated = require("../middlewares/isAuthenticated")
-
+const isAuthenticated = require("../middlewares/isAuthenticated");
 
 // Rutas relacionadas a Profile, Followers, Following
 
 // Hay que agregarle el /:user a las rutas NO OLVIDAR
-router.use(isAuthenticated)
-router.get('/:username', userController.profile);
-router.get('/:username/followers', userController.followers);
-router.get('/:username/following', userController.following);
+router.use(isAuthenticated);
+router.get("/:username", userController.profile);
+router.get("/:username/followers", userController.followers);
+router.get("/:username/following", userController.following);
 // router.get("/", userController.index);
 /* router.get("/", userController.index); */
 // router.get("/:id", userController.show);
