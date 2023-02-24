@@ -23,11 +23,8 @@ async function profile(req, res) {
 }
 
 async function newTweet(req, res) {
-  await User.create({
-    newTweet: req.body.newTweet,
-  });
   console.log(newTweet);
-  return res.redirect("/pages/home");
+  return res.redirect("/");
 }
 
 module.exports = {

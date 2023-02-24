@@ -12,7 +12,7 @@
         <h5 class="my-4">Home</h5>
         <form action="/home" method="post">
           <div class="d-flex">
-            <div>
+            <div class="me-3">
               <img
                 src="<%=user.image%>"
                 style="width: 4rem; height: 4rem"
@@ -20,7 +20,7 @@
                 alt="image"
               />
             </div>
-            <div class="form-floating">
+            <div class="w-100">
               <textarea
                 class="form-control"
                 placeholder="Leave a comment here"
@@ -30,13 +30,15 @@
               ></textarea>
             </div>
           </div>
-          <button
-            class="btn text-light"
-            type="submit"
-            style="background-color: #1d9bf0"
-          >
-            Tweet
-          </button>
+          <div class="d-flex justify-content-end mt-2">
+            <button
+              class="btn text-light"
+              type="submit"
+              style="background-color: #1d9bf0"
+            >
+              Tweet
+            </button>
+          </div>
         </form>
 
         <% for (const tweet of allTweets) { %>
