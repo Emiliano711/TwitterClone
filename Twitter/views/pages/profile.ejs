@@ -4,11 +4,12 @@
     <%- include("../partials/meta") %>
   </head>
   <body>
-    <div class="row container">
+    <div class="row">
+      <!--     NavBar -->
       <div class="col-2"><%- include("../partials/navbar") %></div>
-
+      <!-- Perfil Page -->
       <div
-        style="background-color: #1d9bf0; height: 20vh"
+        style="background-color: #1d9bf0; height: 8rem"
         class="col-10 col-md-6"
       >
         <% if (user.image.includes("http")) { %>
@@ -63,37 +64,12 @@
         </div>
         <h6 class="ms-3 mt-3">Tweets</h6>
         <% for (const tweet of userProfile.tweets) { %>
-
-        <div class="d-flex w-100 align-items-center">
-          <div class="d-flex align-items-center gap-3 w-100">
-            <!--     Imagen Usuario -->
-
-            <div>
-              <img
-                src="<%=userProfile.image  %>"
-                style="width: 2.5rem"
-                class="figure-img img-fluid rounded-pill align-self-center"
-                alt="image"
-              />
-            </div>
-            <!-- Nombre y Apellido del Usuario -->
-            <div class="d-flex flex-column">
-              <h6 class="mb-0 p-0">
-                <%=userProfile.firstname %> <%=userProfile.lastname %>
-              </h6>
-              <p class="p-0 m-0" style="font-size: 0.8rem; color: #969696">
-                <%= userProfile.username %>
-              </p>
-              <!-- Contenido del usuario -->
-              <div class="d-flex">
-                <p><%=tweet.text %></p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!--           comment -->
+        <%- include("../partials/tweet", { tweet }) %>
+        <!--           comment -->
         <% } %>
       </div>
-
+      <!-- MoreInfo -->
       <div class="col-4 d-none d-lg-block col-lg-4">
         <%- include("../partials/moreinfo") %>
       </div>
