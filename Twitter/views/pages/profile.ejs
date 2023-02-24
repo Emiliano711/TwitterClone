@@ -5,13 +5,11 @@
   </head>
   <body>
     <div class="row container">
-      <div class="col-2 col-md-2 col-lg-2">
-        <%- include("../partials/navbar") %>
-      </div>
+      <div class="col-2"><%- include("../partials/navbar") %></div>
 
       <div
         style="background-color: #1d9bf0; height: 20vh"
-        class="col-8 col-md-6 col-lg-7"
+        class="col-10 col-md-6"
       >
         <% if (user.image.includes("http")) { %>
         <img
@@ -64,36 +62,10 @@
           </div>
         </div>
         <h6 class="ms-3 mt-3">Tweets</h6>
-
-        <div class="d-flex w-100 align-items-center">
-          <% for (const tweet of user.tweets) { %>
-          <div class="d-flex align-items-center gap-3 w-100">
-            <!--     Imagen Usuario -->
-            <div>
-              <img
-                src="<%=user.image  %>"
-                style="width: 2.5rem"
-                class="figure-img img-fluid rounded-pill align-self-center"
-                alt="image"
-              />
-            </div>
-            <!-- Nombre y Apellido del Usuario -->
-            <div class="d-flex flex-column">
-              <h6 class="mb-0 p-0"><%=user.firstname %> <%=user.lastname %></h6>
-              <p class="p-0 m-0" style="font-size: 0.8rem; color: #969696">
-                <%= user.username %>
-              </p>
-              <!-- Contenido del usuario -->
-              <div class="d-flex">
-                <p><%=tweet.text %></p>
-              </div>
-            </div>
-          </div>
-          <% } %>
-        </div>
+        <%- include("../partials/tweet") %>
       </div>
 
-      <div class="col-md-3 d-none d-md-block">
+      <div class="col-4 d-none d-lg-block col-lg-4">
         <%- include("../partials/moreinfo") %>
       </div>
     </div>
