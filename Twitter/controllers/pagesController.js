@@ -15,7 +15,7 @@
  * En caso de estar creando una API, este controlador carece de sentido y
  * no debería existir.
  */
-const { Tweet } = require("../models");
+const { Tweet, User } = require("../models");
 
 async function register(req, res) {
   res.render("users/sign-up");
@@ -27,7 +27,18 @@ async function login(req, res) {
 }
 
 async function showHome(req, res) {
-  const tweets = await Tweet.find().populate("user").exec();
+  const userFollowing = await User.findById(req.user._id);
+  const followings = userFollowing.following;
+  const users = await User.find({ _id: { $in: followings } }).populate(
+    "tweets"
+  );
+  const tweets = [];
+  for (const user of users) {
+    tweets.push(user.tweets);
+  }
+
+  //console.log(tweets); // los tweets que se generan por el for
+  // const tweets = await Tweet.find().populate("user");
   return res.render("pages/home", { tweets });
 }
 

@@ -15,7 +15,7 @@ async function following(req, res) {
 }
 
 async function profile(req, res) {
-  const userProfile = await User.findById(req.params.id);
+  const userProfile = await User.findOne({ username: req.params.username });
   return res.render("pages/profile", { userProfile });
 }
 

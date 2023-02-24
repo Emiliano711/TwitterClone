@@ -23,18 +23,17 @@ module.exports = async () => {
   const users = [];
 
   for (let i = 0; i <= process.env.TOTAL_USERS; i++) {
-
-    const firstname = faker.name.firstName()
-    const lastname = faker.name.lastName()
+    const firstname = faker.name.firstName();
+    const lastname = faker.name.lastName();
 
     const user = new User({
       firstname,
       lastname,
-      username: `${firstname}_${lastname}`,
+      username: `${firstname}_${lastname}`, //Pasar a minusuclas
       password: await bcrypt.hash("123", 8),
       image: faker.internet.avatar(),
       description: faker.lorem.sentence(10),
-      email: `${firstname}_${lastname}@gmail.com`
+      email: `${firstname}_${lastname}@gmail.com`,
       //Slugify: tolowercase, tildes
       //Lodash
     });
@@ -42,9 +41,12 @@ module.exports = async () => {
   }
 
   for (const user of users) {
-    const randomUser = users[faker.datatype.number({ min: 0, max: process.env.TOTAL_USERS - 1 })]
-    user.following.push(randomUser)
-    randomUser.followers.push(user)
+    const randomUser =
+      users[
+        faker.datatype.number({ min: 0, max: process.env.TOTAL_USERS - 1 })
+      ];
+    user.following.push(randomUser);
+    randomUser.followers.push(user);
   }
 
   /*   console.log(users) */
