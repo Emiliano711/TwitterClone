@@ -25,7 +25,6 @@ async function register(req, res) {
 async function login(req, res) {
   res.render("users/login");
 }
-
 async function showHome(req, res) {
   const userFollowing = await User.findById(req.user._id);
   const followings = userFollowing.following;
@@ -34,10 +33,10 @@ async function showHome(req, res) {
   // Esto gracias al populate
   const allTweets = []
   for (const newuser of users) {
-    const tweets = await Tweet.find({user: newuser._id}).populate("user")
-    allTweets.push(...tweets); 
+    const tweets = await Tweet.find({ user: newuser._id }).populate("user")
+    allTweets.push(...tweets);
   }
-   return res.render("pages/home", { allTweets }); 
+  return res.render("pages/home", { allTweets });
 }
 
 
