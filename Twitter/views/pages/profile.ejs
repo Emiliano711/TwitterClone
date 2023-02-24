@@ -57,8 +57,12 @@
             >
           </div>
           <div class="ms-auto">
-            <a> <%= user.followers.length %> Followers</a>
-            <a> <%= user.following.length %> Following</a>
+            <a class="btn" href="../usuarios/followers" role="button"
+              ><%= user.followers.length %>Followers</a
+            >
+            <a class="btn" href="../usuarios/following" role="button"
+              ><%= user.following.length %>Following</a
+            >
           </div>
         </div>
         <h6 class="ms-3 mt-3">Tweets</h6>
