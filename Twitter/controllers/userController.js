@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const { User, Tweet } = require("../models");
 
 async function followers(req, res) {
   const userFollowers = await User.findOne({ username: req.params.username });
@@ -23,11 +23,19 @@ async function profile(req, res) {
 }
 
 async function newTweet(req, res) {
-  await User.create({
-    newTweet: req.body.newTweet,
+  const newTweet = new Tweet({
+    user: req.user.id,
+    text: req.body.newTweet,
   });
   console.log(newTweet);
-  return res.redirect("/pages/home");
+  newTweet.save();
+
+  await User.updateOne(
+    { _id: req.user.id },
+    { $set: { tweets: req.body.newTweet } }
+  );
+  console.log(newTweet);
+  return res.redirect("/");
 }
 
 module.exports = {

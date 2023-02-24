@@ -10,7 +10,7 @@ router.use(isAuthenticated);
 router.get("/:username", userController.profile);
 router.get("/:username/followers", userController.followers);
 router.get("/:username/following", userController.following);
-router.post("/", userController.newTweet);
+router.put("/", userController.newTweet);
 // router.get("/", userController.index);
 /* router.get("/", userController.index); */
 // router.get("/:id", userController.show);
