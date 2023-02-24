@@ -28,7 +28,6 @@ async function login(req, res) {
 
 async function showHome(req, res) {
   const tweets = await Tweet.find().populate("user").exec();
-
   return res.render("pages/home", { tweets });
 }
 
