@@ -9,7 +9,35 @@
       <div class="col-2"><%- include("../partials/navbar") %></div>
       <!-- Home Page -->
       <div class="col-10 col-md-6">
-        <h1 class="my-4">Página de inicio</h1>
+        <h5 class="my-4">Home</h5>
+        <form action="/home" method="post">
+          <div class="d-flex">
+            <div>
+              <img
+                src="<%=user.image%>"
+                style="width: 4rem; height: 4rem"
+                class="figure-img img-fluid rounded-pill align-self-center"
+                alt="image"
+              />
+            </div>
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                placeholder="Leave a comment here"
+                name="newTweet"
+                id="newTweet"
+                style="height: 100px"
+              ></textarea>
+            </div>
+          </div>
+          <button
+            class="btn text-light"
+            type="submit"
+            style="background-color: #1d9bf0"
+          >
+            Tweet
+          </button>
+        </form>
 
         <% for (const tweet of allTweets) { %>
         <!--           comment -->

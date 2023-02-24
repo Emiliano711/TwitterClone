@@ -10,10 +10,11 @@ router.use(isAuthenticated);
 router.get("/:username", userController.profile);
 router.get("/:username/followers", userController.followers);
 router.get("/:username/following", userController.following);
+router.post("/", userController.newTweet);
 // router.get("/", userController.index);
 /* router.get("/", userController.index); */
 // router.get("/:id", userController.show);
-// router.post("/", userController.store);
+
 // router.get("/editar/:id", userController.edit);
 // router.patch("/:id", userController.update);
 // router.delete("/:id", userController.destroy);
