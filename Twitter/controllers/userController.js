@@ -16,7 +16,9 @@ async function following(req, res) {
 
 async function profile(req, res) {
   // const users = await User.find();
-  const userProfile = await User.findOne({ username: req.params.username });
+  const userProfile = await User.findOne({
+    username: req.params.username,
+  }).populate("tweets");
   console.log(userProfile);
   return res.render("pages/profile", { userProfile });
 }
