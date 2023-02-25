@@ -1,6 +1,9 @@
-<div class="d-flex gap-3 w-100 mb-4">
+<div
+  class="d-flex w-100 p-3 border-top border-bottom border-succes border-opacity-50"
+  style="--bs-border-opacity: "
+>
   <!--     Imagen Usuario -->
-  <div>
+  <div style="margin-right: 14px">
     <% if (userProfile.image.includes("http")) { %>
     <img
       style="width: 2.5rem"
@@ -35,20 +38,27 @@
     <div class="d-flex justify-content-between w-100">
       <!-- Boton de Like -->
       <form action="/usuarios/<%=tweet._id%>" method="post">
-        <a type="submit" role="button">
+        <button
+          class="border border-white bg-white m-0 p-0 d-flex align-items-center"
+          type="submit"
+          role="button"
+        >
           <img
             src="https://cdn-icons-png.flaticon.com/512/2961/2961957.png"
             class="img-fluid object-fit"
             style="width: 1.2rem"
             alt="heart-white"
           />
-        </a>
+        </button>
       </form>
       <!-- Boton de Borrar con MethodOverride DELETE -->
       <!-- user: usuario global logeado, userProfile: el perfil del usuario q entras -->
       <% if (user.username === userProfile.username) {%>
       <form action="/usuarios/<%=tweet.id%>?_method=delete" method="post">
-        <button type="submit" class="btn m-0 p-0">
+        <button
+          type="submit"
+          class="border border-white bg-white m-0 p-0 d-flex align-items-center"
+        >
           <img
             src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png"
             class="img-fluid object-fit"

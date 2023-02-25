@@ -10,14 +10,24 @@
   <body>
     <div class="row">
       <!--       NavBar -->
-      <div class="col-2"><%- include("../partials/navbar") %></div>
+      <div class="col-2 border"><%- include("../partials/navbar") %></div>
       <!--       Body -->
-      <div class="col-10 col-md-6">
-        <div class="d-flex align-items-start flex-column mt-4">
-          <h5 class="mb-0">
-            <%= userFollowing.firstname %> <%= userFollowing.lastname %>
-          </h5>
-          <small>@<%= userFollowing.username %></small>
+      <div class="col-10 col-md-6 p-0">
+        <div class="px-3 pt-3">
+          <!--           Flecha Atrás -->
+          <div class="d-flex align-items-center mt-4">
+            <a
+              class="text-decoration-none text-black fs-4"
+              href="/usuarios/<%= userFollowing.username %>"
+              >🡠</a
+            >
+            <div class="d-flex align-items-start flex-column ms-4">
+              <h5 class="mb-0">
+                <%= userFollowing.firstname %> <%= userFollowing.lastname %>
+              </h5>
+              <small>@<%= userFollowing.username %></small>
+            </div>
+          </div>
         </div>
         <div class="mt-3 d-flex justify-content-around">
           <div>
@@ -28,10 +38,20 @@
             >
           </div>
           <div>
-            <a class="fs-5 text-black fw-semibold">Following</a>
+            <a class="fs-5 text-black fw-semibold text-decoration-none"
+              >Following</a
+            >
+            <div
+              style="
+                background-color: #1d9bf0;
+                width: 100%;
+                height: 4px;
+                margin-top: 8px;
+              "
+            ></div>
           </div>
         </div>
-        <div class="mt-3 d-flex flex-column gap-2">
+        <div class="d-flex flex-column border-top">
           <!-- TO DO: Hacer que entre a el arreglo following dentro del Modelo User -->
           <% for (user of users){%>
           <!-- comment -->
@@ -43,7 +63,7 @@
         </div>
       </div>
       <!--       More info -->
-      <div class="col-4 d-none d-lg-block col-lg-4">
+      <div class="col-4 d-none d-lg-block col-lg-4 border">
         <%- include("../partials/moreinfo") %>
       </div>
     </div>

@@ -6,11 +6,13 @@
   <body>
     <div class="row">
       <!--     NavBar -->
-      <div class="col-2"><%- include("../partials/navbar") %></div>
+      <div style="position: relative" class="col-2 border p-0">
+        <%- include("../partials/navbar") %>
+      </div>
       <!-- Perfil Page -->
       <div
         style="background-color: #1d9bf0; height: 8rem"
-        class="col-9 col-lg-7"
+        class="col-9 col-lg-7 p-0"
       >
         <% if (userProfile.image.includes("http")) { %>
         <img
@@ -41,55 +43,63 @@
           alt="Gato"
         />
         <%}%>
-
-        <div class="d-flex justify-content-end mt-5">
-          <button
-            class="btn text-light rounded-pill"
-            type="submit"
-            style="background-color: #1d9bf0"
-          >
-            Follow
-          </button>
-        </div>
-        <h3 class="ms-3 mt-3 mb-0">
-          <%= userProfile.firstname %> <%= userProfile.lastname %>
-        </h3>
-        <div class="d-flex">
-          <div class="ms-3">
-            <small style="color: #647788; font-weight: 400">
-              @<%= userProfile.username %></small
+        <!--         User Info -->
+        <div class="p-3">
+          <div class="d-flex justify-content-end mt-5">
+            <button
+              class="btn text-light rounded-pill"
+              type="submit"
+              style="background-color: #1d9bf0"
             >
+              Follow
+            </button>
           </div>
-          <div class="ms-auto d-flex align-items-center gap-3">
-            <div class="d-flex align-items-center gap-1">
-              <small style="font-weight: 700; color: #000000"
-                ><%= userProfile.followers.length %></small
-              >
-              <a
-                class="text-decoration-none"
-                href="/usuarios/<%=userProfile.username%>/followers"
-                role="button"
-                style="color: #647788"
-              >
-                Followers</a
+          <h3 class="ms-3 mt-3 mb-0">
+            <%= userProfile.firstname %> <%= userProfile.lastname %>
+          </h3>
+          <div class="d-flex">
+            <div class="ms-3">
+              <small style="color: #647788; font-weight: 400">
+                @<%= userProfile.username %></small
               >
             </div>
-            <div class="d-flex align-items-center gap-1">
-              <small style="color: #000000; font-weight: 700"
-                ><%= userProfile.following.length %></small
-              >
-              <a
-                class="text-decoration-none"
-                href="/usuarios/<%=userProfile.username%>/following"
-                role="button"
-                style="color: #647788"
-              >
-                Following</a
-              >
+            <div class="ms-auto d-flex align-items-center gap-3">
+              <div class="d-flex align-items-center gap-1">
+                <small style="font-weight: 700; color: #000000"
+                  ><%= userProfile.followers.length %></small
+                >
+                <a
+                  class="text-decoration-none"
+                  href="/usuarios/<%=userProfile.username%>/followers"
+                  role="button"
+                  style="color: #647788"
+                >
+                  Followers</a
+                >
+              </div>
+              <div class="d-flex align-items-center gap-1">
+                <small style="color: #000000; font-weight: 700"
+                  ><%= userProfile.following.length %></small
+                >
+                <a
+                  class="text-decoration-none"
+                  href="/usuarios/<%=userProfile.username%>/following"
+                  role="button"
+                  style="color: #647788"
+                >
+                  Following</a
+                >
+              </div>
             </div>
           </div>
         </div>
-        <h6 class="ms-3 mt-3">Tweets</h6>
+        <div style="width: 100%">
+          <h6 class="ms-3 mt-3 fs-5 fw-semibold">Tweets</h6>
+          <div
+            class="ms-3"
+            style="background-color: #1d9bf0; width: 3.8rem; height: px"
+          ></div>
+        </div>
         <% for (const tweet of userProfile.tweets) { %>
         <!--           comment -->
         <%- include("../partials/tweetProfile", { tweet }) %>
@@ -97,7 +107,7 @@
         <% } %>
       </div>
       <!-- MoreInfo -->
-      <div class="d-none d-lg-block col-lg-3">
+      <div class="d-none d-lg-block col-lg-3 border p-0">
         <%- include("../partials/moreinfo") %>
       </div>
     </div>
