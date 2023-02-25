@@ -5,7 +5,7 @@ const { en } = require("date-fns/locale");
 
 
 async function followers(req, res) {
-  const usersInfo = await User.aggregate([{ $sample: { size: 3 } }])
+  const usersInfo = await User.aggregate([{ $sample: { size: 4 } }])
   const userFollowers = await User.findOne({ username: req.params.username });
   const followers = userFollowers.followers;
   const users = await User.find({ _id: { $in: followers } });
@@ -13,7 +13,7 @@ async function followers(req, res) {
 }
 
 async function following(req, res) {
-  const usersInfo = await User.aggregate([{ $sample: { size: 3 } }])
+  const usersInfo = await User.aggregate([{ $sample: { size: 4 } }])
 
   const userFollowing = await User.findOne({ username: req.params.username });
   const followings = userFollowing.following;
@@ -22,7 +22,7 @@ async function following(req, res) {
 }
 
 async function profile(req, res) {
-  const usersInfo = await User.aggregate([{ $sample: { size: 3 } }])
+  const usersInfo = await User.aggregate([{ $sample: { size: 4 } }])
   // const users = await User.find();
   const userProfile = await User.findOne({
     username: req.params.username,

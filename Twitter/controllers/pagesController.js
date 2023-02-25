@@ -13,7 +13,7 @@ async function login(req, res) {
 
 // Home
 async function showHome(req, res) {
-  const usersInfo = await User.aggregate([{ $sample: { size: 3 } }])
+  const usersInfo = await User.aggregate([{ $sample: { size: 4 } }])
   const userFollowing = await User.findById(req.user._id);
   const followings = userFollowing.following;
   const users = await User.find({ _id: { $in: followings } }).populate("tweets")
