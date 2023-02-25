@@ -24,9 +24,12 @@
       <h6 class="mb-0 p-0">
         <%= userProfile.firstname %> <%= userProfile.lastname %>
       </h6>
-      <p class="p-0 m-0" style="font-size: 0.8rem; color: #969696">
+      <small class="p-0 m-0" style="font-size: 0.8rem; color: #969696">
         @<%= userProfile.username %>
-      </p>
+      </small>
+      <small class="p-0 m-0" style="font-size: 0.8rem; color: #969696">
+        -<%= tweet.createdAt %></small
+      >
     </div>
     <!-- Contenido del usuario -->
     <div class="d-flex w-100">
