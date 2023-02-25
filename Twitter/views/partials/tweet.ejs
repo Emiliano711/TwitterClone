@@ -3,30 +3,18 @@
   <a href="/usuarios/<%= tweet.user.username %>">
     <% if (user.image.includes("http")) { %>
     <img
-      class="rounded-pill position-relative ms-3 border border-5 border-white"
-      style="
-        height: 7rem;
-        width: 7rem;
-        top: 55px;
-        border-style: solid;
-        border-color: white;
-      "
+      style="width: 2.5rem"
+      class="figure-img img-fluid rounded-pill align-self-center"
+      alt="image"
       src="<%= tweet.user.image %>"
-      alt="Gato"
     />
     <!--   coment -->
     <% } else {%>
     <img
-      class="rounded-pill position-relative ms-3 border border-5 border-white"
-      style="
-        height: 7rem;
-        width: 7rem;
-        top: 55px;
-        border-style: solid;
-        border-color: white;
-      "
+      style="width: 2.5rem"
+      class="figure-img img-fluid rounded-pill align-self-center"
+      alt="image"
       src="/img/<%= tweet.user.image %>"
-      alt="Gato"
     />
     <%}%>
   </a>

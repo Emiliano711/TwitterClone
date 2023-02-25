@@ -12,7 +12,12 @@
     </a>
     <!--     Desc. Usuario -->
     <div>
-      <h6 class="mb-0 p-0"><%= user.firstname %> <%= user.lasttname %></h6>
+      <a
+        class="text-decoration-none text-black"
+        href="/usuarios/<%= user.username %>"
+      >
+        <h6 class="mb-0 p-0"><%= user.firstname %> <%= user.lasttname %></h6>
+      </a>
       <p class="p-0 m-0" style="font-size: 0.8rem; color: #969696">
         @<%= user.username %>
       </p>

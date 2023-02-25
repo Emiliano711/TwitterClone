@@ -43,7 +43,7 @@ module.exports = async () => {
   for (const user of users) {
     const randomUser =
       users[
-        faker.datatype.number({ min: 0, max: process.env.TOTAL_USERS - 1 })
+      faker.datatype.number({ min: 0, max: process.env.TOTAL_USERS - 1 })
       ];
     user.following.push(randomUser);
     randomUser.followers.push(user);
