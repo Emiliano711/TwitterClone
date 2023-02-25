@@ -1,5 +1,5 @@
 <div
-  class="d-flex w-100 p-3 border-top border-bottom border-succes border-opacity-50"
+  class="d-flex w-100 p-3 border-top border-succes border-opacity-50"
   style="--bs-border-opacity: "
 >
   <!--     Imagen Usuario -->
@@ -31,7 +31,8 @@
         @<%= userProfile.username %>
       </small>
       <small class="p-0 m-0" style="font-size: 0.8rem; color: #969696">
-        -<%= tweet.createdAt %></small
+        <!--         comment -->
+        · <%= formatDistance(new Date(), tweet.createdAt, {locale: en})%></small
       >
     </div>
     <!-- Contenido del usuario -->

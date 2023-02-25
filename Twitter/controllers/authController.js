@@ -40,7 +40,6 @@ function createUser(req, res) {
             image: files.image.newFilename,
             password: passwordHasheado
         })
-        console.log("pasamos");
         /* user.save() */
         return res.redirect("/");
     })
