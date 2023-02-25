@@ -1,4 +1,7 @@
 const { Tweet, User } = require("../models");
+const { format } = require("date-fns");
+const { es } = require("date-fns/locale");
+
 
 async function register(req, res) {
   res.render("users/sign-up");
@@ -15,11 +18,11 @@ async function showHome(req, res) {
   // Entro a un Usuario y convirtio los id de tweets en Object: tweets: [ [Object], [Object] ]
   // Esto gracias al populate
   const allTweets = []
-  for (const newuser of users) {
-    const tweets = await Tweet.find({ user: newuser._id }).populate("user")
-    allTweets.push(...tweets);
+  for (const newuser of users) {                                     // hace 1min:    24hrs
+    const tweets = await Tweet.find({ user: newuser._id}).sort({"createdAt": -1}).populate("user")
+    allTweets.push(...tweets);  
   }
-  return res.render("pages/home", { allTweets });
+  return res.render("pages/home", { allTweets, format, es });
 }
 
 
@@ -35,8 +38,6 @@ async function show404(req, res) {
   res.status(404).render("pages/404");
 }
 
-// Otros handlers...
-// ...
 
 module.exports = {
   login,

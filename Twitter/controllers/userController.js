@@ -1,4 +1,6 @@
 const { User, Tweet } = require("../models");
+const { format } = require("date-fns");
+const { es } = require("date-fns/locale");
 
 async function followers(req, res) {
   const userFollowers = await User.findOne({ username: req.params.username });
@@ -16,10 +18,10 @@ async function following(req, res) {
 
 async function profile(req, res) {
   // const users = await User.find();
-  const user = await User.findOne({
+  const userProfile = await User.findOne({
     username: req.params.username,
-  }).populate("tweets");
-  return res.render("pages/profile", { user });
+  }).populate({ path: "tweets", options: { sort: { createdAt: -1 } } });
+  return res.render("pages/profile", { userProfile, format, es });
 }
 
 module.exports = {

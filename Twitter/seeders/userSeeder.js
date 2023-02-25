@@ -12,7 +12,7 @@
  * cantidad de registros de prueba que se insertarán en la base de datos.
  *
  */
-
+const slugify = require("slugify");
 const { faker } = require("@faker-js/faker");
 const { User } = require("../models");
 const bcrypt = require("bcryptjs");
@@ -29,13 +29,32 @@ module.exports = async () => {
     const user = new User({
       firstname,
       lastname,
-      username: `${firstname}_${lastname}`, //Pasar a minusuclas
+      username: slugify(`${firstname}_${lastname}`, {
+        lower: true,
+        remove: /[*+~.()'"!:@]/g,
+      }), //Pasar a minusuclas
       password: await bcrypt.hash("123", 8),
       image: faker.internet.avatar(),
       description: faker.lorem.sentence(10),
-      email: `${firstname}_${lastname}@gmail.com`,
-      //Slugify: tolowercase, tildes
-      //Lodash
+      email: slugify(`${firstname}_${lastname}@gmail.com`, {
+        lower: true,
+        remove: /[*+~.()'"!:]/g,
+      })
+
+      /*const slugify = require('slugify');
+      const textWithAccents = "éàïüñ";
+      const textWithoutAccents = slugify(textWithAccents, { remove: /[*+~.()'"!:@]/g });
+      console.log(textWithoutAccents);*/
+
+      /*
+      slugify('some string', {
+        replacement: '-',  // replace spaces with replacement character, defaults to `-`
+        remove: undefined, // remove characters that match regex, defaults to `undefined`
+        lower: false,      // convert to lower case, defaults to `false`
+        strict: false,     // strip special characters except replacement, defaults to `false`
+        locale: 'vi',       // language code of the locale to use
+        trim: true         // trim leading and trailing replacement chars, defaults to `true`
+      })*/
     });
     users.push(user);
   }
@@ -43,7 +62,7 @@ module.exports = async () => {
   for (const user of users) {
     const randomUser =
       users[
-      faker.datatype.number({ min: 0, max: process.env.TOTAL_USERS - 1 })
+        faker.datatype.number({ min: 0, max: process.env.TOTAL_USERS - 1 })
       ];
     user.following.push(randomUser);
     randomUser.followers.push(user);

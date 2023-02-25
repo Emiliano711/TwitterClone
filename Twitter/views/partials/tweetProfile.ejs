@@ -1,12 +1,12 @@
 <div class="d-flex gap-3 w-100 mb-4">
   <!--     Imagen Usuario -->
   <div>
-    <% if (user.image.includes("http")) { %>
+    <% if (userProfile.image.includes("http")) { %>
     <img
       style="width: 2.5rem"
       class="figure-img img-fluid rounded-pill align-self-center"
       alt="image"
-      src="<%= user.image %>"
+      src="<%= userProfile.image %>"
     />
     <!--   coment -->
     <% } else {%>
@@ -14,16 +14,18 @@
       style="width: 2.5rem"
       class="figure-img img-fluid rounded-pill align-self-center"
       alt="image"
-      src="/img/<%= user.image %>"
+      src="/img/<%= userProfile.image %>"
     />
     <%}%>
   </div>
   <!-- Nombre y Apellido del Usuario -->
   <div class="d-flex flex-column w-100">
     <div class="d-flex align-items-center gap-1">
-      <h6 class="mb-0 p-0"><%= user.firstname %> <%= user.lastname %></h6>
+      <h6 class="mb-0 p-0">
+        <%= userProfile.firstname %> <%= userProfile.lastname %>
+      </h6>
       <p class="p-0 m-0" style="font-size: 0.8rem; color: #969696">
-        @<%= user.username %>
+        @<%= userProfile.username %>
       </p>
     </div>
     <!-- Contenido del usuario -->
@@ -43,6 +45,8 @@
         </a>
       </form>
       <!-- Boton de Borrar con MethodOverride DELETE -->
+      <!-- user: usuario global logeado, userProfile: el perfil del usuario q entras -->
+      <% if (user.username === userProfile.username) {%>
       <form action="/usuarios/<%=tweet.id%>?_method=delete" method="post">
         <button type="submit" class="btn m-0 p-0">
           <img
@@ -53,6 +57,7 @@
           />
         </button>
       </form>
+      <% } %>
     </div>
   </div>
   <hr />

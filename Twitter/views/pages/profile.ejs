@@ -12,7 +12,7 @@
         style="background-color: #1d9bf0; height: 8rem"
         class="col-9 col-lg-7"
       >
-        <% if (user.image.includes("http")) { %>
+        <% if (userProfile.image.includes("http")) { %>
         <img
           class="rounded-pill position-relative ms-3 border border-5 border-white"
           style="
@@ -22,7 +22,7 @@
             border-style: solid;
             border-color: white;
           "
-          src="<%= user.image %>"
+          src="<%= userProfile.image %>"
           alt="Gato"
         />
         <!--   coment -->
@@ -37,7 +37,7 @@
             border-color: white;
             object-fit: cover;
           "
-          src="/img/<%= user.image %>"
+          src="/img/<%= userProfile.image %>"
           alt="Gato"
         />
         <%}%>
@@ -52,22 +52,22 @@
           </button>
         </div>
         <h3 class="ms-3 mt-3 mb-0">
-          <%= user.firstname %> <%= user.lastname %>
+          <%= userProfile.firstname %> <%= userProfile.lastname %>
         </h3>
         <div class="d-flex">
           <div class="ms-3">
             <small style="color: #647788; font-weight: 400">
-              @<%= user.username %></small
+              @<%= userProfile.username %></small
             >
           </div>
           <div class="ms-auto d-flex align-items-center gap-3">
             <div class="d-flex align-items-center gap-1">
               <small style="font-weight: 700; color: #000000"
-                ><%= user.followers.length %></small
+                ><%= userProfile.followers.length %></small
               >
               <a
                 class="text-decoration-none"
-                href="/usuarios/<%=user.username%>/followers"
+                href="/usuarios/<%=userProfile.username%>/followers"
                 role="button"
                 style="color: #647788"
               >
@@ -76,11 +76,11 @@
             </div>
             <div class="d-flex align-items-center gap-1">
               <small style="color: #000000; font-weight: 700"
-                ><%= user.following.length %></small
+                ><%= userProfile.following.length %></small
               >
               <a
                 class="text-decoration-none"
-                href="/usuarios/<%=user.username%>/following"
+                href="/usuarios/<%=userProfile.username%>/following"
                 role="button"
                 style="color: #647788"
               >
@@ -90,7 +90,7 @@
           </div>
         </div>
         <h6 class="ms-3 mt-3">Tweets</h6>
-        <% for (const tweet of user.tweets) { %>
+        <% for (const tweet of userProfile.tweets) { %>
         <!--           comment -->
         <%- include("../partials/tweetProfile", { tweet }) %>
         <!--           comment -->
