@@ -38,7 +38,7 @@ module.exports = async () => {
       description: faker.lorem.sentence(10),
       email: slugify(`${firstname}_${lastname}@gmail.com`, {
         lower: true,
-        remove: /[*+~.()'"!:]/g,
+        remove: /[*+~()'"!:]/g,
       })
 
       /*const slugify = require('slugify');
