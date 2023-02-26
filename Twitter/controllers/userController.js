@@ -41,10 +41,11 @@ async function bannerEdit(req, res) {
   await User.findByIdAndUpdate(req.user.id, {
     banner: req.body.banner
   })
-  return res.redirect(`back`)
+  return res.redirect("back")
 }
 /* Función Follow */
 async function follow(req, res) {
+
   const userId = req.user.id;
   const follow = req.params.id
 

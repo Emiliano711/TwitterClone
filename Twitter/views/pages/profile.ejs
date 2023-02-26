@@ -71,8 +71,9 @@
           <%}%>
 
           <!--         User Info -->
-          <% const userFollowing = globalUser.following.some((u) => u.id ===
-          userProfile.id) %>
+          <% const userFollowing = globalUser.following.some((following) =>
+          following.id === userProfile.id) %>
+
           <div class="p-3">
             <% if ( userProfile.id !== globalUser.id) { %>
             <!--   coment -->
