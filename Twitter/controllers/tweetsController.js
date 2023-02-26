@@ -17,7 +17,7 @@ async function deleteTweet(req, res) {
     await User.findByIdAndUpdate(req.user.id,
         { $pull: { tweets: req.params.id } }
     );
-    return res.redirect(`/usuarios/${req.user.username}`)
+    return res.redirect(`back`)
 }
 
 async function addLikeTweet(req, res) {
@@ -29,7 +29,7 @@ async function addLikeTweet(req, res) {
         }/*        {
             new: true
         } */)
-    return res.redirect("/")
+    return res.redirect("back")
 }
 
 
@@ -42,7 +42,7 @@ async function removeLikeTweet(req, res) {
         }/* , {
         new: true
     } */)
-    return res.redirect("/")
+    return res.redirect("back")
 }
 
 

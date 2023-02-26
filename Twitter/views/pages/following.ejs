@@ -53,18 +53,17 @@
         </div>
         <div class="d-flex flex-column border-top pt-4">
           <!-- TO DO: Hacer que entre a el arreglo following dentro del Modelo User -->
-          <% for (user of users){%>
+          <% for (const smallUser of users){%>
           <!-- comment -->
-          <%= console.log(user) %>
           <!-- comment -->
-          <%- include("../partials/smallUser", { user }) %>
+          <%- include("../partials/smallUser", { smallUser, globalUser }) %>
           <!-- comment -->
           <%}%>
         </div>
       </div>
       <!--       More info -->
       <div class="col-4 d-none d-lg-block col-lg-3 border p-0">
-        <%- include("../partials/moreinfo", { usersInfo }) %>
+        <%- include("../partials/moreinfo", { usersInfo, globalUser }) %>
       </div>
     </div>
   </body>

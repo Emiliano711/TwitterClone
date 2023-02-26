@@ -11,11 +11,15 @@ router.use(isAuthenticated);
 router.get("/:username", userController.profile);
 router.get("/:username/followers", userController.followers);
 router.get("/:username/following", userController.following);
+router.put("/:id/follow", userController.follow)
+router.put("/:id/unfollow", userController.unfollow)
+router.put("/banner", userController.bannerEdit)
 router.put("/", tweetsController.newTweet);
 router.delete("/:id", tweetsController.deleteTweet);
 router.put("/tweets/:id/add", tweetsController.addLikeTweet);
-router.put("/tweets/:id/rm", tweetsController.removeLikeTweet);
-router.put("/banner", userController.bannerEdit)
+router.put("/tweets/:id/remove", tweetsController.removeLikeTweet);
+
+
 // router.get("/", userController.index);
 /* router.get("/", userController.index); */
 // router.get("/:id", userController.show);

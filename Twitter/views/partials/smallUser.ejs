@@ -3,12 +3,12 @@
   <div class="d-flex align-items-center gap-3 w-100">
     <!--     Imagen Usuario -->
     <a href="/usuarios/<%= user.username %>">
-      <% if (user.image.includes("http")) { %>
+      <% if (smallUser.image.includes("http")) { %>
       <img
         style="width: 2.5rem"
         class="figure-img img-fluid rounded-pill align-self-center"
         alt="image"
-        src="<%= user.image %>"
+        src="<%= smallUser.image %>"
       />
       <!--   coment -->
       <% } else {%>
@@ -16,7 +16,7 @@
         style="width: 2.5rem"
         class="figure-img img-fluid rounded-pill align-self-center"
         alt="image"
-        src="/img/<%= user.image %>"
+        src="/img/<%= smallUser.image %>"
       />
       <%}%>
     </a>
@@ -24,23 +24,54 @@
     <div>
       <a
         class="text-decoration-none text-black"
-        href="/usuarios/<%= user.username %>"
+        href="/usuarios/<%= smallUser.username %>"
       >
-        <h6 class="mb-0 p-0"><%= user.firstname %> <%= user.lasttname %></h6>
+        <h6 class="mb-0 p-0">
+          <%= smallUser.firstname %> <%= smallUser.lasttname %>
+        </h6>
       </a>
       <p class="p-0 m-0" style="font-size: 0.8rem; color: #969696">
-        @<%= user.username %>
+        @<%= smallUser.username %>
       </p>
     </div>
   </div>
   <!--     Boton Follow -->
+  <% const userFollowing = globalUser.following.some((u) => u.id ===
+  smallUser.id) %>
+  <!--     Boton Follow -->
+  <% if (smallUser.id !== globalUser.id) { %>
+  <!--   coment -->
+  <%if (!userFollowing) { %>
   <div class="justify-content-end">
-    <button
-      type="button"
-      class="btn rounded-pill"
-      style="background-color: #1d9bf0; color: white"
+    <form
+      action="/usuarios/<%=smallUser._id%>/follow?_method=put"
+      method="post"
     >
-      Follow
-    </button>
+      <button
+        type="submit"
+        class="btn rounded-pill"
+        style="background-color: #1d9bf0; color: white"
+      >
+        Follow
+      </button>
+    </form>
   </div>
+  <% } else { %>
+  <div class="justify-content-end">
+    <form
+      action="/usuarios/<%=smallUser._id%>/unfollow?_method=put"
+      method="post"
+    >
+      <button
+        type="submit"
+        class="btn rounded-pill border"
+        style="background-color: #ffffff; color: rgb(0, 0, 0)"
+      >
+        Unfollow
+      </button>
+    </form>
+  </div>
+  <% } %>
+  <!--   coment -->
+  <% } %>
 </div>
