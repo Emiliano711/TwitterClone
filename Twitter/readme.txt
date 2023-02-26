@@ -31,6 +31,7 @@ color primario: #1d9bf0
 
 
 hardcore de emi:
+
 <div class="d-flex justify-content-between mb-2">
         <div>
           <img

@@ -45,20 +45,6 @@ function createUser(req, res) {
     })
 }
 
-/*
-async function createUser(req, res) {
-    const passwordParaHashear = req.body.password;
-    const passwordHasheado = await bcrypt.hash(passwordParaHashear, 8);
-    const nuevoUsuario = await User.create({
-        email: req.body.email,
-        username: req.body.username,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        password: passwordHasheado,
-    });
-    res.redirect("/");
-}*/
-
 const loginPassport = passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",

@@ -21,6 +21,9 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Inserte una imagen.']
     },
+    banner: {
+        type: String,
+    },
     password: {
         type: String,
         required: [true, 'Inserte un nickname.']

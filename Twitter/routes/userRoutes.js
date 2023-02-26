@@ -13,6 +13,9 @@ router.get("/:username/followers", userController.followers);
 router.get("/:username/following", userController.following);
 router.put("/", tweetsController.newTweet);
 router.delete("/:id", tweetsController.deleteTweet);
+router.put("/tweets/:id/add", tweetsController.addLikeTweet);
+router.put("/tweets/:id/rm", tweetsController.removeLikeTweet);
+router.put("/banner", userController.bannerEdit)
 // router.get("/", userController.index);
 /* router.get("/", userController.index); */
 // router.get("/:id", userController.show);

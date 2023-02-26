@@ -20,7 +20,35 @@ async function deleteTweet(req, res) {
     return res.redirect(`/usuarios/${req.user.username}`)
 }
 
+async function addLikeTweet(req, res) {
+    const tweetId = req.params.id
+    const userId = req.user.id
+    await Tweet.findByIdAndUpdate(tweetId,
+        {
+            $push: { likes: userId }
+        }/*        {
+            new: true
+        } */)
+    return res.redirect("/")
+}
+
+
+async function removeLikeTweet(req, res) {
+    const tweetId = req.params.id
+    const userId = req.user.id
+    await Tweet.findByIdAndUpdate(tweetId,
+        {
+            $pull: { likes: userId }
+        }/* , {
+        new: true
+    } */)
+    return res.redirect("/")
+}
+
+
 module.exports = {
     newTweet,
-    deleteTweet
+    deleteTweet,
+    addLikeTweet,
+    removeLikeTweet
 };
