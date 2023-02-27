@@ -2,7 +2,6 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const { User } = require("../models");
 const formidable = require("formidable");
-const flash = require('express-flash');
 
 
 async function register(req, res) {
@@ -31,7 +30,6 @@ function createUser(req, res) {
     form.parse(req, async (err, fields, files) => {
         const allUsers = await User.find()
         const unavailableUser = allUsers.some((u) => u.username === fields.username || u.email === fields.email)
-
         if (unavailableUser) {
             req.flash('text', 'El usuario ya existe.');
             res.redirect("back")
