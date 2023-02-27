@@ -25,36 +25,17 @@ module.exports = async () => {
   for (let i = 0; i <= process.env.TOTAL_USERS; i++) {
     const firstname = faker.name.firstName();
     const lastname = faker.name.lastName();
+    console.log(firstname,lastname)
+  
 
     const user = new User({
       firstname,
       lastname,
-      username: slugify(`${firstname}_${lastname}`, {
-        lower: true,
-        remove: /[*+~.()'"!:@]/g,
-      }), //Pasar a minusuclas
+      username: `${firstname}_${lastname}`, //Pasar a minusuclas
       password: await bcrypt.hash("123", 8),
       image: faker.internet.avatar(),
       description: faker.lorem.sentence(10),
-      email: slugify(`${firstname}_${lastname}@gmail.com`, {
-        lower: true,
-        remove: /[*+~()'"!:]/g,
-      })
-
-      /*const slugify = require('slugify');
-      const textWithAccents = "éàïüñ";
-      const textWithoutAccents = slugify(textWithAccents, { remove: /[*+~.()'"!:@]/g });
-      console.log(textWithoutAccents);*/
-
-      /*
-      slugify('some string', {
-        replacement: '-',  // replace spaces with replacement character, defaults to `-`
-        remove: undefined, // remove characters that match regex, defaults to `undefined`
-        lower: false,      // convert to lower case, defaults to `false`
-        strict: false,     // strip special characters except replacement, defaults to `false`
-        locale: 'vi',       // language code of the locale to use
-        trim: true         // trim leading and trailing replacement chars, defaults to `true`
-      })*/
+      email:`${firstname}_${lastname}@gmail.com`
     });
     users.push(user);
   }
@@ -66,9 +47,10 @@ module.exports = async () => {
       ];
     user.following.push(randomUser);
     randomUser.followers.push(user);
+    await user.save()
   }
 
   /*   console.log(users) */
-  await User.insertMany(users);
+  //await User.insertMany(users);
   console.log("[Database] Se corrió el seeder de Users.");
 };
