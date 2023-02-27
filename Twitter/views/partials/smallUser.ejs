@@ -35,9 +35,8 @@
       </p>
     </div>
   </div>
-  <!--     Boton Follow -->
-  <% const userFollowing = globalUser.following.some((u) => u.id ===
-  smallUser.id) %>
+  <!-- prettier-ignore -->
+  <% const userFollowing = globalUser.following.some((u) => u.id === smallUser.id) %>
   <!--     Boton Follow -->
   <% if (smallUser.id !== globalUser.id) { %>
   <!--   coment -->
@@ -72,6 +71,7 @@
     </form>
   </div>
   <% } %>
+
   <!--   coment -->
   <% } %>
 </div>

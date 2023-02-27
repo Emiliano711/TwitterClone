@@ -59,6 +59,7 @@
               />
               <label for="floatingPassword">Password</label>
             </div>
+
             <div class="d-grid gap-1 my-5">
               <button
                 class="btn text-light"
@@ -68,6 +69,13 @@
                 Login
               </button>
             </div>
+
+            <% if(messages.error){ %>
+            <div class="alert alert-danger mt-3" role="alert">
+              <%= messages.error %>
+            </div>
+            <% } %>
+
             <div class="my-5 text-center">
               <a
                 href="/register"
