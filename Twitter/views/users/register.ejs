@@ -98,6 +98,15 @@
                 />
                 <label for="floatingPassword">Password</label>
               </div>
+
+              <!--        Mensaje de error -->
+              <% if(messages.text){ %>
+              <div class="alert alert-danger mt-3" role="alert">
+                <%= messages.text %>
+              </div>
+              <% } %>
+
+              <!--          Botón de registro -->
               <div class="d-grid gap-1 my-5">
                 <button
                   class="btn text-light"

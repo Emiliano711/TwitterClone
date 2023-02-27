@@ -2,6 +2,8 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const { User } = require("../models");
 const formidable = require("formidable");
+const flash = require('express-flash');
+
 
 async function register(req, res) {
     res.render("users/register")
@@ -22,32 +24,38 @@ async function logout(req, res) {
 
 //  Crear usuario en la DB
 function createUser(req, res) {
-
     const form = formidable({
-
         uploadDir: __dirname + "/../public/img",
         keepExtensions: true,
     });
-
     form.parse(req, async (err, fields, files) => {
-        const passwordParaHashear = fields.password;
-        const passwordHasheado = await bcrypt.hash(passwordParaHashear, 8);
-        await User.create({
-            firstname: fields.firstname,
-            lastname: fields.lastname,
-            email: fields.email,
-            username: fields.username,
-            image: files.image.newFilename,
-            password: passwordHasheado
-        })
-        /* user.save() */
-        return res.redirect("/");
+        const allUsers = await User.find()
+        const unavailableUser = allUsers.some((u) => u.username === fields.username || u.email === fields.email)
+        console.log(unavailableUser);
+        if (unavailableUser) {
+            req.flash('text', 'El usuario ya existe.');
+            res.redirect("back")
+        } else {
+            const passwordParaHashear = fields.password;
+            const passwordHasheado = await bcrypt.hash(passwordParaHashear, 8);
+            await User.create({
+                firstname: fields.firstname,
+                lastname: fields.lastname,
+                email: fields.email,
+                username: fields.username,
+                image: files.image.newFilename,
+                password: passwordHasheado
+            })
+            /* user.save() */
+            return res.redirect("/");
+        }
     })
 }
 
 const loginPassport = passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
+    failureFlash: true
 });
 
 

@@ -43,6 +43,7 @@
     <div class="d-flex align-items-center justify-content-between w-100">
       <!-- Boton de Like -->
       <div class="d-flex align-items-center gap-2">
+        <% console.log("En vista Home", tweet.likes[0]) %>
         <!--         comment -->
         <% const userLike = tweet.likes.some((u) => u.id === user.id) %>
         <!--         comment -->

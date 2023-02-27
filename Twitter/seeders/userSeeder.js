@@ -40,21 +40,6 @@ module.exports = async () => {
         lower: true,
         remove: /[*+~()'"!:]/g,
       })
-
-      /*const slugify = require('slugify');
-      const textWithAccents = "éàïüñ";
-      const textWithoutAccents = slugify(textWithAccents, { remove: /[*+~.()'"!:@]/g });
-      console.log(textWithoutAccents);*/
-
-      /*
-      slugify('some string', {
-        replacement: '-',  // replace spaces with replacement character, defaults to `-`
-        remove: undefined, // remove characters that match regex, defaults to `undefined`
-        lower: false,      // convert to lower case, defaults to `false`
-        strict: false,     // strip special characters except replacement, defaults to `false`
-        locale: 'vi',       // language code of the locale to use
-        trim: true         // trim leading and trailing replacement chars, defaults to `true`
-      })*/
     });
     users.push(user);
   }
@@ -62,7 +47,7 @@ module.exports = async () => {
   for (const user of users) {
     const randomUser =
       users[
-        faker.datatype.number({ min: 0, max: process.env.TOTAL_USERS - 1 })
+      faker.datatype.number({ min: 0, max: process.env.TOTAL_USERS - 1 })
       ];
     user.following.push(randomUser);
     randomUser.followers.push(user);

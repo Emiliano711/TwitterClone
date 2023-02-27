@@ -1,6 +1,17 @@
 color primario: #1d9bf0
 
 
+
+A preguntar:
+
+Flash 💚
+Likes en profile 💚
+slugify en Modelo 💚
+who to card - botón follow
+
+
+
+
        <% if (user.image.includes("http")) { %>
         <img
           class="slide-bottom"

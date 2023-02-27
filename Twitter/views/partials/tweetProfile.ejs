@@ -43,7 +43,7 @@
       <!-- Boton de Like -->
       <div class="d-flex align-items-center gap-2">
         <!--         comment -->
-        <% const userLike = tweet.likes.some((u) => u.id === user.id) %>
+        <% const userLike = tweet.likes.some((u) => String(u) === user.id) %>
         <!--         comment -->
         <% if (!userLike){ %>
         <!--   con el if(!userLike agrega Likes) -->
