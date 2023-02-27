@@ -31,7 +31,7 @@ function createUser(req, res) {
     form.parse(req, async (err, fields, files) => {
         const allUsers = await User.find()
         const unavailableUser = allUsers.some((u) => u.username === fields.username || u.email === fields.email)
-        console.log(unavailableUser);
+
         if (unavailableUser) {
             req.flash('text', 'El usuario ya existe.');
             res.redirect("back")
