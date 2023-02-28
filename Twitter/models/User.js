@@ -61,21 +61,18 @@ const userSchema = new Schema(
 
 // Slugify para el username y el email
 
- userSchema.pre('save', async function (next) {
-    const user = this;
-    // Expresion regular creada
-    user.username = user.username.replace(/[$%]/gi,"")
-    user.username = slugify(user.username,{
-        replacement: '-',
-        trim: true, 
-        lower: true,
-        strict: false, 
+userSchema.pre('save', async function (next) {
+  // Expresion regular creada
+  this.username = this.username.replace(/[$%]/gi, "")
+  this.username = slugify(this.username, {
+    replacement: '-',
+    trim: true,
+    lower: true,
+    strict: false,
 
-    })
-    next();
-
-
-}) 
+  })
+  next();
+})
 
 
 

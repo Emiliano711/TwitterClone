@@ -2,11 +2,6 @@ const { User } = require("../models");
 const { format, formatDistance } = require("date-fns");
 const { en } = require("date-fns/locale");
 
-/* async function randomUsers() {
-  const usersInfo = await User.aggregate([{ $sample: { size: 4 } }])
-}
- */
-
 /* Página Followers */
 async function followers(req, res) {
   const usersInfo = await User.aggregate([{ $sample: { size: 4 } }])
@@ -17,6 +12,7 @@ async function followers(req, res) {
   const users = await User.find({ _id: { $in: followers } });
   return res.render("pages/followers", { users, userFollowers, usersInfo, globalUser });
 }
+
 /* Página Following */
 async function following(req, res) {
   const usersInfo = await User.aggregate([{ $sample: { size: 4 } }])
@@ -44,6 +40,7 @@ async function bannerEdit(req, res) {
   })
   return res.redirect("back")
 }
+
 /* Función Follow */
 async function follow(req, res) {
 
@@ -59,6 +56,7 @@ async function follow(req, res) {
   res.redirect("back")
 
 }
+
 /* Función Unfollow */
 async function unfollow(req, res) {
 

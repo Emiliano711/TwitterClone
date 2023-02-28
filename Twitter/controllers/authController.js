@@ -28,24 +28,27 @@ function createUser(req, res) {
         keepExtensions: true,
     });
     form.parse(req, async (err, fields, files) => {
-        const allUsers = await User.find()
-        const unavailableUser = allUsers.some((u) => u.username === fields.username || u.email === fields.email)
-        if (unavailableUser) {
-            req.flash('text', 'El usuario ya existe.');
+        const users = await User.find()
+        if (fields.username === "" || fields.email === "" || fields.password === "" || fields.firstname === "") {
+            req.flash('text', 'Rellena todos los campos.');
             res.redirect("back")
         } else {
-            const passwordParaHashear = fields.password;
-            const passwordHasheado = await bcrypt.hash(passwordParaHashear, 8);
-            await User.create({
-                firstname: fields.firstname,
-                lastname: fields.lastname,
-                email: fields.email,
-                username: fields.username,
-                image: files.image.newFilename,
-                password: passwordHasheado
-            })
-            /* user.save() */
-            return res.redirect("/");
+            const unavailableUser = users.some((u) => u.username === fields.username || u.email === fields.email)
+            if (unavailableUser) {
+                req.flash('text', 'El usuario ya existe.');
+                res.redirect("back")
+            } else {
+                await User.create({
+                    firstname: fields.firstname,
+                    lastname: fields.lastname,
+                    email: fields.email,
+                    username: fields.username,
+                    image: files.image.newFilename,
+                    password: await bcrypt.hash(fields.password, 8)
+                })
+                /* user.save() */
+                return res.redirect("/");
+            }
         }
     })
 }

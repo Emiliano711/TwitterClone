@@ -1,7 +1,7 @@
 <div class="d-flex w-100 p-3 border-top border-succes border-opacity-50">
   <!--     Imagen Usuario -->
   <a style="margin-right: 14px" href="/usuarios/<%= tweet.user.username %>">
-    <% if (user.image.includes("http")) { %>
+    <% if (tweet.user.image.includes("http")) { %>
     <img
       style="width: 2.5rem"
       class="figure-img img-fluid rounded-pill align-self-center"
@@ -44,7 +44,8 @@
       <!-- Boton de Like -->
       <div class="d-flex align-items-center gap-2">
         <!--         comment -->
-        <% const userLike = tweet.likes.some((u) => u.id === user.id) %>
+        <% const userLike = tweet.likes.some((userThatLiked) => userThatLiked.id
+        === user.id) %>
         <!--         comment -->
         <% if (!userLike){ %>
         <!--   con el if(!userLike agrega Likes) -->

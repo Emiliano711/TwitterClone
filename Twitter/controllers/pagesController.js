@@ -18,34 +18,23 @@ async function showHome(req, res) {
   const userFollowing = await User.findById(req.user._id);
   const followings = userFollowing.following;
   const users = await User.find({ _id: { $in: followings } }).populate("tweets")
-  // Entro a un Usuario y convirtio los id de tweets en Object: tweets: [ [Object], [Object] ]
-  // Esto gracias al populate
   const allUsersTweets = []
   const allTweets = []
   const userTweets = await User.findById(req.user.id).populate({ path: "tweets", options: { sort: { createdAt: -1 } } });
   const myTweets = userTweets.tweets
   allUsersTweets.push(...myTweets);
-  for (const newuser of users) {               // hace 1min:    24hrs
+
+  for (const newuser of users) {
     const tweets = newuser.tweets
     allUsersTweets.push(...tweets);
   }
+
   for (const tweet of allUsersTweets) {
     const tweetsWithUser = await Tweet.find(tweet._id).populate({ path: "user", options: { sort: { createdAt: -1 } } }).populate("likes")
     allTweets.push(...tweetsWithUser)
   }
+
   return res.render("pages/home", { allTweets, format, en, formatDistance, usersInfo, globalUser });
-
-
-  /*   for (const newuser of users) {                                     // hace 1min:    24hrs
-     const tweets = await Tweet.find({ user: newuser._id }).sort({ "createdAt": -1 }).populate("user")
-     allTweets.push(...tweets);
-   }  */
-
-
-  /*   const userTweets = await User.findById(req.user.id).populate({ path: "tweets", options: { sort: { createdAt: -1 } } });
-    const myTweets = userTweets.tweets
-    allTweets.push(...myTweets); */
-
 }
 
 

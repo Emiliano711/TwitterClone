@@ -40,7 +40,7 @@
   <!--     Boton Follow -->
   <% if (smallUser.id !== globalUser.id) { %>
   <!--   coment -->
-  <%if (!userFollowing) { %>
+  <% if (!userFollowing) { %>
   <div class="justify-content-end">
     <form
       action="/usuarios/<%=smallUser._id%>/follow?_method=put"
